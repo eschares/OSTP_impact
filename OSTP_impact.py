@@ -4,7 +4,6 @@ Created on Mon Oct 24 11:59:06 2022
 @author: eschares
 """
 import streamlit as st
-import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -19,8 +18,8 @@ st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide', initia
 
 st.title('OSTP Impact')
 st.write('This project looks at U.S. federally funded publications from 2017-2021, as defined in the database Dimensions.')
-st.markdown('These are publications which would have fallen under the 2022 [updated OSTP guidance](https://www.whitehouse.gov/ostp/news-updates/2022/08/25/ostp-issues-guidance-to-make-federally-funded-research-freely-available-without-delay/).')
-st.write('Key characteristics include absolue number, by publisher, by journal title, by research institution, and by OA status.')
+st.markdown('These publications are of interest as they would have qualified under the 2022 [updated OSTP guidance](https://www.whitehouse.gov/ostp/news-updates/2022/08/25/ostp-issues-guidance-to-make-federally-funded-research-freely-available-without-delay/).')
+st.write('Key characteristics in this study include absolute number, by publisher, by journal title, by research institution, and by OA status.')
 
 st.header('Number')
 st.write('The number of U.S. federally funded publications per year in Dimensions are:')
@@ -55,7 +54,7 @@ selected_publishers = st.multiselect('Publisher Name:', pd.Series(publishers_df[
 
 if st.button('Find that Publisher'):
     for publisher_name in selected_publishers:
-        st.write(f"changed name, {publisher_name}")
+        #st.write(f"changed name, {publisher_name}")
         #clear_name_from_list(publisher_name)
 
         st.session_state.publishers_to_change.append(publisher_name)
@@ -209,7 +208,7 @@ selected_journals = st.multiselect('Journal Name:', pd.Series(jnl_df['Name'].res
 
 if st.button('Find that Journal'):
     for journal_name in selected_journals:
-        st.write(f"changed name, {journal_name}")
+        #st.write(f"changed name, {journal_name}")
         #clear_name_from_list(publisher_name)
 
         st.session_state.jnls_to_change.append(journal_name)
@@ -359,7 +358,7 @@ selected_resorgs = st.multiselect('Institution Name:', pd.Series(institution_df[
 
 if st.button('Find that Institution'):
     for resorg_name in selected_resorgs:
-        st.write(f"changed name, {resorg_name}")
+        #st.write(f"changed name, {resorg_name}")
         #clear_name_from_list(publisher_name)
 
         st.session_state.resorgs_to_change.append(resorg_name)
