@@ -12,7 +12,7 @@ import os
 import re
 from datetime import datetime
 
-st.set_page_config(page_title='OSTP Impact', page_icon="", layout='centered', initial_sidebar_state="expanded")
+st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide', initial_sidebar_state="expanded")
 
 #st.set_page_config(layout="wide")
 #st.image('unsub_extender2.png')
@@ -462,6 +462,8 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
+
+
 ### Open Access ###
 st.header('Open Access Status')
 
@@ -514,6 +516,7 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=False)
 
 
+
 ### OA of publishers ###
 st.subheader('OA Status of Federally Funded pubs by Publisher')
 oa_by_pub_df = pd.read_csv('Publishers.csv', header=1)
@@ -524,7 +527,7 @@ if st.checkbox('Show raw publisher OA data'):
 
 
 sortby = st.radio(
-    'How do you want to sort?', ('Total Number of Federally Funded pubs','% of Closed', '% of Green', '% of Gold', '% of Bronze', '% of Hybrid'))
+    'The following charts will show the first 32 publishers. How do you want to sort?', ('Total Number of Federally Funded pubs','% of Closed', '% of Green', '% of Gold', '% of Bronze', '% of Hybrid'))
 
 if sortby == 'Total Number of Federally Funded pubs':
     oa_by_pub_df = oa_by_pub_df.sort_values(by='FF Pubs', ascending=False)
@@ -573,3 +576,16 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=False)
+
+
+
+##### Footer in sidebar #####
+#st.subheader("About")
+github = "[![GitHub repo stars](https://img.shields.io/github/stars/eschares/ostp_impact?logo=github&style=social)](<https://github.com/eschares/unsub_extender>)"
+twitter = "[![Twitter Follow](https://img.shields.io/twitter/follow/eschares?style=social)](<https://twitter.com/eschares>)"
+zenodo = "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5167933.svg)](https://doi.org/10.5281/zenodo.5167933)"
+st.write(zenodo)
+st.write(twitter + " " + github)
+
+html_string = "<p style=font-size:13px>v1.0, last modified 10/24/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+st.markdown(html_string, unsafe_allow_html=True)
