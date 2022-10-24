@@ -4,8 +4,14 @@ This site hosts the underlying data to an analysis of the impact of the 2022 OST
 
 This analysis looks at five years of publications from 2017-2021 to investigate the characteristics of those research outputs that would have fallen under this updated guidance.
 
-- Publishers.csv contains information by publisher:
-- - Absolute number of U.S. federally funded (FF) publications
-- - Absolute number of total publications
-- - Percentage of FF publications
-- - Open Access status of FF publications, by absolue number and percentage
+Topics include
+- Publishers
+- Journal titles
+- Research institutions
+- Open Access status
+
+Each of the above has its own data file, which includes
+- Absolute number of U.S. federally funded (FF) publications
+- Absolute number of total publications
+- Percentage of FF publications
+- Open Access status of FF publications, by absolue number and percentage
