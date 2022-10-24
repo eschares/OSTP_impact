@@ -1,0 +1,575 @@
+"""
+Created on Mon Oct 24 11:59:06 2022
+
+@author: eschares
+"""
+import streamlit as st
+import streamlit.components.v1 as components
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import os
+import re
+from datetime import datetime
+
+st.set_page_config(page_title='OSTP Impact', page_icon="", layout='centered', initial_sidebar_state="expanded")
+
+#st.set_page_config(layout="wide")
+#st.image('unsub_extender2.png')
+
+st.title('OSTP Impact')
+st.write('This project looks at U.S. federally funded publications from 2017-2021, as defined in the database Dimensions.')
+st.markdown('These are publications which would have fallen under the 2022 [updated OSTP guidance](https://www.whitehouse.gov/ostp/news-updates/2022/08/25/ostp-issues-guidance-to-make-federally-funded-research-freely-available-without-delay/).')
+st.write('Key characteristics include absolue number, by publisher, by journal title, by research institution, and by OA status.')
+
+st.header('Number')
+st.write('The number of U.S. federally funded publications per year in Dimensions are:')
+
+d = {'Year': [2021, 2020, 2019, 2018, 2017],
+    'Number': ['275,825', '277,407', '262,682', '259,518', '251,040']
+    }
+summary_df = pd.DataFrame(data=d)
+summary_df
+
+
+
+# Initialize session_state versions of to_true list
+if 'publishers_to_change' not in st.session_state:
+    st.session_state.publishers_to_change = []
+if 'jnls_to_change' not in st.session_state:
+    st.session_state.jnls_to_change = []
+if 'resorgs_to_change' not in st.session_state:
+    st.session_state.resorgs_to_change = []
+
+
+
+st.header('Publishers')
+publishers_df = pd.read_csv('Publishers.csv', header=1)
+if st.checkbox('Show raw publisher data'):
+    st.subheader('Raw data')
+    st.write(publishers_df)
+
+
+st.write('Find a Publisher and turn it red on the charts:')
+selected_publishers = st.multiselect('Publisher Name:', pd.Series(publishers_df['Name'].reset_index(drop=True)), help='Displayed in order provided by the underlying datafile')
+
+if st.button('Change Publisher color!'):
+    for publisher_name in selected_publishers:
+        st.write(f"changed name, {publisher_name}")
+        #clear_name_from_list(publisher_name)
+
+        st.session_state.publishers_to_change.append(publisher_name)
+        
+# Actually do the changes in df; this runs every time the script runs but session_state lets me save the previous changes
+st.write('changing', st.session_state.publishers_to_change)
+for name in st.session_state.publishers_to_change:
+    title_filter = (publishers_df['Name'] == name)
+    publishers_df.loc[title_filter, 'color'] = 'red'
+
+
+### Publishers ###
+st.subheader('By absolute number')
+fig = px.scatter(publishers_df, x='Worldwide',y='FF Pubs', color='color',
+                color_discrete_sequence=['blue', 'red'],
+                log_x='True', 
+                hover_name='Name', 
+                hover_data={'color':False},
+                trendline='ols',
+                trendline_scope='overall',
+                trendline_color_override='blue',
+                #text='Name'
+                )
+
+fig.update_traces(textposition='top center')
+
+fig.update_layout(
+    height=800, width=1200,
+    title_text='Publishers Total vs. U.S. Federally Funded Publications, 2017-2021',
+    xaxis_title = 'Total number of publications worldwide 2017-2021 [log]',
+    yaxis_title = 'Number of U.S. Federally Funded publications 2017-2021',
+    showlegend = False
+)
+
+publishers_df2 = publishers_df[ (publishers_df['FF Pubs'] > 29180) | (publishers_df['Worldwide']>427000) ]
+num_rows = publishers_df2.shape[0]
+for i in range(num_rows):
+    fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
+                    y=publishers_df2["FF Pubs"].iloc[i],
+                    text = publishers_df2["Name"].iloc[i],
+                    # showarrow = True,
+                        ax = 0,
+                        ay = -10
+                    )
+
+fig.add_annotation(x=4.593, y=23500,
+            text="American Geophysical Union",
+            showarrow=False,
+            arrowhead=0)
+
+fig.add_annotation(x=4.39, y=14000,
+            text="American Astronomical Society",
+            showarrow=True,
+            arrowhead=0,
+            ax = -30,
+            ay = -30)
+
+
+st.plotly_chart(fig, use_container_width=True)
+st.write('R^2 is',px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
+
+
+
+
+st.subheader('By percentage')
+fig = px.scatter(publishers_df, x='Worldwide',y='percentage', color='color',
+                color_discrete_sequence=['blue', 'red'],
+                hover_name='Name', 
+                hover_data={'color':False},
+                #text='Name',
+                log_x='True',
+                )
+#change X to worldwide
+#worldwide
+#US Fed Funded Publications
+
+fig.update_traces(textposition='top center')
+
+fig.update_layout(
+    height=700, width=1200,
+    title_text='Publishers Total Publications vs. Percentage U.S. Federally Funded',
+    xaxis_title = 'Total number of Publications 2017-2021 [log]',
+    yaxis_title = "Percentage of Publications that are FF, 2017-2021",
+    showlegend = False
+)
+
+publishers_df2 = publishers_df[ (publishers_df['percentage'] > 51) | (publishers_df['Worldwide']>200000) ]
+num_rows = publishers_df2.shape[0]
+for i in range(num_rows):
+    fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
+                    y=publishers_df2["percentage"].iloc[i],
+                    text = publishers_df2["Name"].iloc[i],
+                    # showarrow = True,
+                        ax = 0,
+                        ay = -10
+                    )
+
+fig.add_annotation(x=3.576, y=52.5,
+            text="Am. Assn of Immunologists",
+            showarrow=False,
+            arrowhead=0)
+
+
+fig.add_annotation(x=3.785, y=50,
+            text="Soc. for Neuroscience",
+            showarrow=True,
+            arrowhead=0,
+                ax=30,
+                ay=18)
+
+fig.add_annotation(x=4.593, y=44.7,
+            text="Am. Geophysical Union (AGU)",
+            showarrow=False,
+            arrowhead=0)
+
+fig.add_annotation(x=4.096, y=44.8,
+            text="Am. Physciological Soc.",
+            showarrow=True,
+            arrowhead=0,
+                ax=30,ay=16)
+
+fig.add_annotation(x=5.02, y=27.7,
+            text="Am. Physical Soc.",
+            showarrow=True,
+            arrowhead=0,
+                ax=30,ay=-16)
+
+
+st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
+
+
+
+### Journals ###
+st.header('Journal Titles')
+
+jnl_df = pd.read_csv('Journal_titles.csv', header=1)
+if st.checkbox('Show raw journal data'):
+    st.subheader('Raw data')
+    st.write(jnl_df)
+
+
+
+st.write('Find a Journal and turn it red on the charts:')
+selected_journals = st.multiselect('Journal Name:', pd.Series(jnl_df['Name'].reset_index(drop=True)), help='Displayed in order provided by the underlying datafile')
+
+if st.button('Change journal color!'):
+    for journal_name in selected_journals:
+        st.write(f"changed name, {journal_name}")
+        #clear_name_from_list(publisher_name)
+
+        st.session_state.jnls_to_change.append(journal_name)
+
+# Actually do the changes in df; this runs every time the script runs but session_state lets me save the previous changes
+st.write('changing', st.session_state.jnls_to_change)
+for name in st.session_state.jnls_to_change:
+    title_filter = (jnl_df['Name'] == name)
+    jnl_df.loc[title_filter, 'color'] = 'red'
+
+
+
+st.subheader('Absolute Number')
+
+fig = px.scatter(jnl_df, x='Worldwide',y='FF Pubs', color='color',
+                 log_x='True', 
+                 hover_name='Name', 
+                 hover_data={'color':False},
+                 trendline='ols',
+                 trendline_scope='overall',
+                 trendline_color_override='blue',
+                )
+
+fig.update_traces(textposition='top center')
+
+fig.update_layout(
+    height=700, width=1200,
+    title_text='Journal Titles: Total vs. U.S. Federally Funded Publications, 2017-2021',
+    xaxis_title = 'Total number of publications worldwide 2017-2021 [log]',
+    yaxis_title = 'Number of U.S. Federally Funded publications 2017-2021',
+    showlegend = False
+)
+
+
+jnl_df2 = jnl_df[ (jnl_df['FF Pubs'] > 8000) | (jnl_df['Worldwide']>52000) | (jnl_df['Name'].str.contains('Physical Review B|Chemical Society')) ]
+num_rows = jnl_df2.shape[0]
+for i in range(num_rows):
+    fig.add_annotation(x=np.log10(jnl_df2['Worldwide']).iloc[i],
+                       y=jnl_df2["FF Pubs"].iloc[i],
+                       text = jnl_df2["Name"].iloc[i],
+                       # showarrow = True,
+                        ax = 0,
+                        ay = -12
+                      )
+    
+fig.add_annotation(x=4.433, y=6940,
+            text="The FASEB Journal",
+            showarrow=True,
+            arrowhead=0,
+                  ay=18,
+                  ax=10)
+
+
+st.plotly_chart(fig, use_container_width=True)
+st.write('R^2 is',px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
+
+
+st.subheader('Percentage')
+
+fig = px.scatter(jnl_df[jnl_df['Worldwide']!=0], x='Worldwide',y='Percentage', color='color',
+                 log_x=False,
+                 hover_name='Name', 
+                 hover_data={'color':False},
+                )
+
+fig.update_traces(textposition='top center')
+
+fig.update_layout(
+    height=700, width=1200,
+    title_text='Journal Titles: Total vs. Percentage U.S. Federally Funded Publications, 2017-2021',
+    xaxis_title = 'Number of total publications worldwide 2017-2021 [log]',
+    yaxis_title = 'Percentage FF, 2017-2021',
+    showlegend = False
+)
+
+jnl_df2 = jnl_df[ (jnl_df['Worldwide'] > 55000) | (jnl_df['Percentage']>53) | ((jnl_df['Percentage']>40) & (jnl_df['Percentage']<44)) ]
+num_rows = jnl_df2.shape[0]
+for i in range(num_rows):
+    fig.add_annotation(x=jnl_df2['Worldwide'].iloc[i],
+                       y=jnl_df2["Percentage"].iloc[i],
+                       text = jnl_df2["Name"].iloc[i],
+                       #showarrow = True,
+                        ax = 5,
+                        ay = -12
+                      )
+
+fig.add_annotation(x=20344, y=53.3,
+            text="PNAS",
+            showarrow=False,
+            arrowhead=0,)
+
+fig.add_annotation(x=8728, y=53,
+            text="eLife",
+            showarrow=True,
+            arrowhead=0,
+                  ax=30,
+                  ay=5)
+
+fig.add_annotation(x=6463, y=52.4,
+            text="Cell Reports",
+            showarrow=True,
+            arrowhead=0,
+                  ax=-50,
+                  ay=5)
+
+fig.add_annotation(x=4447, y=50.3,
+            text="Jnl of Neuroscience",
+            showarrow=True,
+            arrowhead=0,
+                  ax=-50,
+                  ay=15)
+
+fig.add_annotation(x=8384, y=48.5,
+            text="Jnl of Biological Chemistry",
+            showarrow=True,
+            arrowhead=0,
+                  ax=100,
+                  ay=0)
+
+fig.add_annotation(x=7077, y=47.63,
+            text="Science Advances",
+            showarrow=True,
+            arrowhead=0,
+                  ax=-35,
+                  ay=12)
+
+
+st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
+
+### Research Institutions ###
+st.header('Research Institutions')
+
+institution_df = pd.read_csv('ResOrgs.csv', header=1, encoding='latin1')
+if st.checkbox('Show raw institution data'):
+    st.subheader('Raw data')
+    st.write(institution_df)
+
+
+st.write('Find a Research Institution and turn it red on the charts:')
+selected_resorgs = st.multiselect('Institution Name:', pd.Series(institution_df['Name'].reset_index(drop=True)), help='Displayed in order provided by the underlying datafile')
+
+if st.button('Change Institution color'):
+    for resorg_name in selected_resorgs:
+        st.write(f"changed name, {resorg_name}")
+        #clear_name_from_list(publisher_name)
+
+        st.session_state.resorgs_to_change.append(resorg_name)
+
+# Actually do the changes in df; this runs every time the script runs but session_state lets me save the previous changes
+st.write('changing', st.session_state.resorgs_to_change)
+for name in st.session_state.resorgs_to_change:
+    title_filter = (institution_df['Name'] == name)
+    institution_df.loc[title_filter, 'color'] = 'red'
+
+
+
+
+
+st.subheader('Absolute Number')
+
+fig = px.scatter(institution_df, x='AllUS',y='FF Pubs', color='color',
+                 #symbol='Name',
+                 log_x='True', 
+                 hover_name='Name', 
+                 hover_data={'color':False},
+                 trendline='ols',
+                 trendline_scope='overall',
+                 trendline_color_override='blue',
+                 #text='Name'
+                )
+
+fig.update_traces(textposition='top center')
+
+fig.update_layout(
+    height=700, width=1200,
+    title_text='Research Institutions: Total vs. U.S. Federally Funded Publications, 2017-2021',
+    xaxis_title = 'Total number of publications worldwide 2017-2021 [log]',
+    yaxis_title = 'Number of U.S. Federally Funded publications 2017-2021',
+    showlegend = False
+)
+
+
+inst_df2 = institution_df[ (institution_df['FF Pubs'] > 30000) | (institution_df['AllUS']>65000) | (institution_df['Name'].str.contains('Lawrence Berk|Ridge National|Argonne|Iowa State')) ]
+num_rows = inst_df2.shape[0]
+for i in range(num_rows):
+    fig.add_annotation(x=np.log10(inst_df2['AllUS']).iloc[i],
+                       y=inst_df2["FF Pubs"].iloc[i],
+                       text = inst_df2["Name"].iloc[i],
+                       # showarrow = True,
+                        ax = -100,
+                        ay = -12
+                      )
+
+st.plotly_chart(fig, use_container_width=True)
+st.write('R^2 is',px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
+
+
+
+
+st.subheader('Percentage')
+
+fig = px.scatter(institution_df[institution_df['AllUS']!=0], x='AllUS',y='Percentage', color='color',
+                 #symbol='Name', 
+                 hover_name='Name', 
+                 hover_data={'color':False},
+                 log_x=False,
+                 #text='Name'
+                )
+
+fig.update_traces(textposition='top right')
+
+fig.update_layout(
+    height=700, width=1200,
+    title_text='Research Institutions: Total vs. Percentage U.S. Federally Funded Publications, 2017-2021',
+    xaxis_title = 'Number of Total publications 2017-2021',
+    yaxis_title = "Percentage FF, 2017-2021",
+    showlegend = False
+)
+
+inst_df2 = institution_df[ (institution_df['AllUS'] > 80000) | (institution_df['Percentage']>99) | (institution_df['Name'].str.contains('Iowa State|Larence Berk|Ridge Natioal|Argone')) ]
+num_rows = inst_df2.shape[0]
+for i in range(num_rows):
+    fig.add_annotation(x=inst_df2['AllUS'].iloc[i],
+                       y=inst_df2["Percentage"].iloc[i],
+                       text = inst_df2["Name"].iloc[i],
+                       #showarrow = True,
+                        ax = 55,
+                        ay = -12
+                      )
+
+fig.add_shape(type="rect",
+    x0=0, y0=76, x1=21500, y1=92,
+    line=dict(color="RoyalBlue"),
+    #layer="below",
+)
+
+fig.add_annotation(x=24500, y=87,
+            text="National Laboratories",
+            showarrow=False,
+            arrowhead=0,)
+
+st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+### Open Access ###
+st.header('Open Access Status')
+
+st.subheader('Federally Funded Publications')
+
+OA_df = pd.read_csv('OA_FF.csv', header=1, encoding='latin1')
+if st.checkbox('Show raw OA data on Federally Funded pubs'):
+    st.subheader('Raw data')
+    st.write(OA_df)
+
+fig = px.histogram(OA_df, x='Year', y='Count', color='Mode',
+                  barnorm='percent', text_auto='.2f',
+                  color_discrete_sequence=["gray", "green", "gold", "darkgoldenrod", "red"],
+                   title='Open Access status of FF publications')
+
+fig.update_layout(
+    height=700, width=700,
+    title_text='Open Access Status of U.S. Federally Funded Publications, 2017-2021',
+    xaxis_title = 'Year',
+    yaxis_title = 'Percentage FF Publications by OA Mode',
+    legend_traceorder="reversed",
+    legend_title_text='OA Type'
+)
+
+st.plotly_chart(fig, use_container_width=False)
+
+
+
+st.subheader('Worldwide Publications')
+
+OA_WW_df = pd.read_csv('OA_worldwide.csv', header=0, encoding='latin1')
+if st.checkbox('Show raw OA data on Worldwide pubs'):
+    st.subheader('Raw data')
+    st.write(OA_WW_df)
+
+fig = px.histogram(OA_WW_df, x='Year', y='Count', color='Mode',
+                  barnorm='percent', text_auto='.2f',
+                  color_discrete_sequence=["gray", "green", "gold", "darkgoldenrod", "red"],
+                   title='Open Access status of FF publications')
+
+fig.update_layout(
+    height=700, width=700,
+    title_text='Open Access Status of all Publications, 2017-2021',
+    xaxis_title = 'Year',
+    yaxis_title = 'Percentage All Publications by OA Mode',
+    legend_traceorder="reversed",
+    legend_title_text='OA Type'
+)
+
+st.plotly_chart(fig, use_container_width=False)
+
+
+### OA of publishers ###
+st.subheader('OA Status of Federally Funded pubs by Publisher')
+oa_by_pub_df = pd.read_csv('Publishers.csv', header=1)
+
+if st.checkbox('Show raw publisher OA data'):
+    st.subheader('Raw data')
+    st.write(oa_by_pub_df)
+
+
+sortby = st.radio(
+    'How do you want to sort?', ('Total Number of Federally Funded pubs','% of Closed', '% of Green', '% of Gold', '% of Bronze', '% of Hybrid'))
+
+if sortby == 'Total Number of Federally Funded pubs':
+    oa_by_pub_df = oa_by_pub_df.sort_values(by='FF Pubs', ascending=False)
+elif sortby == '% of Closed':
+    oa_by_pub_df = oa_by_pub_df.sort_values(by='% OSTP closed', ascending=False)
+elif sortby == '% of Green':
+    oa_by_pub_df = oa_by_pub_df.sort_values(by='% OSTP Green', ascending=False)
+elif sortby == '% of Gold':
+    oa_by_pub_df = oa_by_pub_df.sort_values(by='% OSTP Gold', ascending=False)
+elif sortby == '% of Bronze':
+    oa_by_pub_df = oa_by_pub_df.sort_values(by='% OSTP Bronze', ascending=False)
+elif sortby == '% of Hybrid':
+    oa_by_pub_df = oa_by_pub_df.sort_values(by='% OSTP Hybrid', ascending=False)
+
+
+fig = px.histogram(oa_by_pub_df.iloc[:16], x='Name', y=['% OSTP closed', '% OSTP Green', '% OSTP Gold', '% OSTP Bronze', '% OSTP Hybrid'], #color='Mode',
+                  barnorm='percent', text_auto='.2f',
+                  color_discrete_sequence=["gray", "green", "gold", "darkgoldenrod", "red"],
+                  title='Open Access status of FF publications')#, facet_col='facet')
+
+fig.update_layout(
+    height=700, width=1200,
+    title_text='Open Access Status of U.S. Federally Funded Publications, by Publisher 2017-2021 <br> Numbers 1-16 based on condition selected',
+    xaxis_title = 'Publisher',
+    yaxis_title = 'Percentage FF Publications by OA Mode',
+    legend_traceorder="reversed",
+    legend_title_text='OA Type'
+)
+
+st.plotly_chart(fig, use_container_width=False)
+
+
+
+fig = px.histogram(oa_by_pub_df.iloc[17:32], x='Name', y=['% OSTP closed', '% OSTP Green', '% OSTP Gold', '% OSTP Bronze', '% OSTP Hybrid'], #color='Mode',
+                  barnorm='percent', text_auto='.2f',
+                  color_discrete_sequence=["gray", "green", "gold", "darkgoldenrod", "red"],
+                  title='Open Access status of FF publications')#, facet_col='facet')
+
+fig.update_layout(
+    height=700, width=1200,
+    title_text='Open Access Status of U.S. Federally Funded Publications, by Publisher 2017-2021 <br> Numbers 17-32 based on condition selected',
+    xaxis_title = 'Publisher',
+    yaxis_title = 'Percentage FF Publications by OA Mode',
+    legend_traceorder="reversed",
+    legend_title_text='OA Type'
+)
+
+st.plotly_chart(fig, use_container_width=False)
