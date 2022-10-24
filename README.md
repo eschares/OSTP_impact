@@ -1,5 +1,3 @@
 # OSTP_impact
 
-Test here is some content made up of some words.
-
-Now I added more does it update?
+This site hosts the underlying data to an analysis of the impact of the 2022 OSTP memo. The updated guidance eliminates the 12-month embargo period on publications arising from U.S. federal funding.
