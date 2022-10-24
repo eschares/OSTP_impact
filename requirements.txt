@@ -1,4 +1,4 @@
 plotly==5.10.0
 streamlit==1.13.0
 pandas==1.5.1
-statsmodel
+statsmodels
