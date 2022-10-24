@@ -15,3 +15,5 @@ Each of the above has its own data file, which includes
 - Absolute number of total publications
 - Percentage of FF publications
 - Open Access status of FF publications, by absolue number and percentage
+
+A website hosts interactive versions of each plot included in the paper, with dynamic labeling and color-coding to highlight user-defined points.
