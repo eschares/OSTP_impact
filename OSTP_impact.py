@@ -50,10 +50,10 @@ if st.checkbox('Show raw publisher data'):
     st.write(publishers_df)
 
 
-st.write('Find a Publisher and turn it red on the charts:')
+st.write('Label a Publisher and turn it red on the charts:')
 selected_publishers = st.multiselect('Publisher Name:', pd.Series(publishers_df['Name'].reset_index(drop=True)), help='Displayed in order provided by the underlying datafile')
 
-if st.button('Change Publisher color!'):
+if st.button('Find that Publisher'):
     for publisher_name in selected_publishers:
         st.write(f"changed name, {publisher_name}")
         #clear_name_from_list(publisher_name)
@@ -90,7 +90,7 @@ fig.update_layout(
     showlegend = False
 )
 
-publishers_df2 = publishers_df[ (publishers_df['FF Pubs'] > 29180) | (publishers_df['Worldwide']>427000) ]
+publishers_df2 = publishers_df[ (publishers_df['FF Pubs'] > 29180) | (publishers_df['Worldwide']>427000) | publishers_df['Name'].isin(selected_publishers)]
 num_rows = publishers_df2.shape[0]
 for i in range(num_rows):
     fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
@@ -142,7 +142,7 @@ fig.update_layout(
     showlegend = False
 )
 
-publishers_df2 = publishers_df[ (publishers_df['percentage'] > 51) | (publishers_df['Worldwide']>200000) ]
+publishers_df2 = publishers_df[ (publishers_df['percentage'] > 51) | (publishers_df['Worldwide']>200000) | publishers_df['Name'].isin(selected_publishers)]
 num_rows = publishers_df2.shape[0]
 for i in range(num_rows):
     fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
@@ -204,10 +204,10 @@ if st.checkbox('Show raw journal data'):
 
 
 
-st.write('Find a Journal and turn it red on the charts:')
+st.write('Label a Journal and turn it red on the charts:')
 selected_journals = st.multiselect('Journal Name:', pd.Series(jnl_df['Name'].reset_index(drop=True)), help='Displayed in order provided by the underlying datafile')
 
-if st.button('Change journal color!'):
+if st.button('Find that Journal'):
     for journal_name in selected_journals:
         st.write(f"changed name, {journal_name}")
         #clear_name_from_list(publisher_name)
@@ -244,7 +244,7 @@ fig.update_layout(
 )
 
 
-jnl_df2 = jnl_df[ (jnl_df['FF Pubs'] > 8000) | (jnl_df['Worldwide']>52000) | (jnl_df['Name'].str.contains('Physical Review B|Chemical Society')) ]
+jnl_df2 = jnl_df[ (jnl_df['FF Pubs'] > 8000) | (jnl_df['Worldwide']>52000) | (jnl_df['Name'].str.contains('Physical Review B|Chemical Society')) | jnl_df['Name'].isin(selected_journals) ]
 num_rows = jnl_df2.shape[0]
 for i in range(num_rows):
     fig.add_annotation(x=np.log10(jnl_df2['Worldwide']).iloc[i],
@@ -285,7 +285,7 @@ fig.update_layout(
     showlegend = False
 )
 
-jnl_df2 = jnl_df[ (jnl_df['Worldwide'] > 55000) | (jnl_df['Percentage']>53) | ((jnl_df['Percentage']>40) & (jnl_df['Percentage']<44)) ]
+jnl_df2 = jnl_df[ (jnl_df['Worldwide'] > 55000) | (jnl_df['Percentage']>53) | ((jnl_df['Percentage']>40) & (jnl_df['Percentage']<44)) | jnl_df['Name'].isin(selected_journals)]
 num_rows = jnl_df2.shape[0]
 for i in range(num_rows):
     fig.add_annotation(x=jnl_df2['Worldwide'].iloc[i],
@@ -354,10 +354,10 @@ if st.checkbox('Show raw institution data'):
     st.write(institution_df)
 
 
-st.write('Find a Research Institution and turn it red on the charts:')
+st.write('Label a Research Institution and turn it red on the charts:')
 selected_resorgs = st.multiselect('Institution Name:', pd.Series(institution_df['Name'].reset_index(drop=True)), help='Displayed in order provided by the underlying datafile')
 
-if st.button('Change Institution color'):
+if st.button('Find that Institution'):
     for resorg_name in selected_resorgs:
         st.write(f"changed name, {resorg_name}")
         #clear_name_from_list(publisher_name)
@@ -398,7 +398,7 @@ fig.update_layout(
 )
 
 
-inst_df2 = institution_df[ (institution_df['FF Pubs'] > 30000) | (institution_df['AllUS']>65000) | (institution_df['Name'].str.contains('Lawrence Berk|Ridge National|Argonne|Iowa State')) ]
+inst_df2 = institution_df[ (institution_df['FF Pubs'] > 30000) | (institution_df['AllUS']>65000) | (institution_df['Name'].str.contains('Lawrence Berk|Ridge National|Argonne|Iowa State')) | institution_df['Name'].isin(selected_resorgs) ]
 num_rows = inst_df2.shape[0]
 for i in range(num_rows):
     fig.add_annotation(x=np.log10(inst_df2['AllUS']).iloc[i],
@@ -435,7 +435,7 @@ fig.update_layout(
     showlegend = False
 )
 
-inst_df2 = institution_df[ (institution_df['AllUS'] > 80000) | (institution_df['Percentage']>99) | (institution_df['Name'].str.contains('Iowa State|Larence Berk|Ridge Natioal|Argone')) ]
+inst_df2 = institution_df[ (institution_df['AllUS'] > 80000) | (institution_df['Percentage']>99) | (institution_df['Name'].str.contains('Iowa State|Larence Berk|Ridge Natioal|Argone')) | institution_df['Name'].isin(selected_resorgs)]
 num_rows = inst_df2.shape[0]
 for i in range(num_rows):
     fig.add_annotation(x=inst_df2['AllUS'].iloc[i],
