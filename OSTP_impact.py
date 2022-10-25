@@ -16,10 +16,26 @@ st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide', initia
 #st.set_page_config(layout="wide")
 #st.image('unsub_extender2.png')
 
-st.title('OSTP Impact')
-st.write('This project looks at U.S. federally funded publications from 2017-2021, as defined in the database Dimensions.')
-st.markdown('These publications are of interest as they would have qualified under the 2022 [updated OSTP guidance](https://www.whitehouse.gov/ostp/news-updates/2022/08/25/ostp-issues-guidance-to-make-federally-funded-research-freely-available-without-delay/).')
-st.write('Key characteristics in this study include absolute number, by publisher, by journal title, by research institution, and by OA status.')
+st.markdown('# Impact of the 2022 OSTP Memo: A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
+#st.title('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
+
+with st.expander("Explanation"):
+    st.write("""
+        On August 25, 2022, the White House Office of Science and Technology Policy (OSTP) released a [memo](https://www.whitehouse.gov/ostp/news-updates/2022/08/25/ostp-issues-guidance-to-make-federally-funded-research-freely-available-without-delay/) regarding public access to scientific research.
+        This updated guidance eliminated the 12-month embargo on publications arising from U.S. federal funding that had been in effect from a previous 2013 OSTP memo.
+        
+        The OSTP released a companion report with the memo, but it only provided a broad estimate of total numbers affected per year.
+
+        Therefore, this study seeks to more deeply investigate the characteristics of U.S. federally funded research over a 5-year period from 2017-2021 to better understand the updated guidance's impact. It uses a manually created custom filter in the Dimensions database to return only publications that arise from U.S. federal funding.
+        
+        Results show that an average of 265,000 articles are published each year that acknowledge U.S. federal funding agencies. These research outputs are further examined to look at patterns by publisher, journal title, institutions, and Open Access status.
+        
+        Each section shows interactive charts and graphs both by absolute number and by percentage of total.
+
+        Additionally, you may search for a particular publisher, journal title, or research institution and label it and color it red to make it easier to distinguish on the graphs.
+    """)
+
+
 
 st.header('Number')
 st.write('The number of U.S. federally funded publications per year in Dimensions are:')
@@ -127,9 +143,7 @@ fig = px.scatter(publishers_df, x='Worldwide',y='percentage', color='color',
                 #text='Name',
                 log_x='True',
                 )
-#change X to worldwide
-#worldwide
-#US Fed Funded Publications
+
 
 fig.update_traces(textposition='top center')
 
@@ -526,7 +540,7 @@ if st.checkbox('Show raw publisher OA data'):
 
 
 sortby = st.radio(
-    'The following charts will show the first 32 publishers. How do you want to sort?', ('Total Number of Federally Funded pubs','% of Closed', '% of Green', '% of Gold', '% of Bronze', '% of Hybrid'))
+    'The following charts will show the highest 32 publishers. How do you want to sort?', ('Total Number of Federally Funded pubs','% of Closed', '% of Green', '% of Gold', '% of Bronze', '% of Hybrid'))
 
 if sortby == 'Total Number of Federally Funded pubs':
     oa_by_pub_df = oa_by_pub_df.sort_values(by='FF Pubs', ascending=False)
@@ -569,6 +583,69 @@ fig.update_layout(
     height=700, width=1200,
     title_text='Open Access Status of U.S. Federally Funded Publications, by Publisher 2017-2021 <br> Numbers 17-32 based on condition selected',
     xaxis_title = 'Publisher',
+    yaxis_title = 'Percentage FF Publications by OA Mode',
+    legend_traceorder="reversed",
+    legend_title_text='OA Type'
+)
+
+st.plotly_chart(fig, use_container_width=False)
+
+
+
+
+### OA of Journals ###
+st.subheader('OA Status of Federally Funded pubs by Journal title')
+oa_by_jnl_df = pd.read_csv('Journal_titles.csv', header=1)
+
+if st.checkbox('Show raw Journal title OA data'):
+    st.subheader('Raw data')
+    st.write(oa_by_jnl_df)
+
+
+sortby = st.radio(
+    'The following charts will show the highest 32 journal titles. How do you want to sort?', ('Total Number of Federally Funded pubs','% of Closed', '% of Green', '% of Gold', '% of Bronze', '% of Hybrid'))
+
+if sortby == 'Total Number of Federally Funded pubs':
+    oa_by_jnl_df = oa_by_jnl_df.sort_values(by='FF Pubs', ascending=False)
+elif sortby == '% of Closed':
+    oa_by_jnl_df = oa_by_jnl_df.sort_values(by='% OSTP closed', ascending=False)
+elif sortby == '% of Green':
+    oa_by_jnl_df = oa_by_jnl_df.sort_values(by='% OSTP Green', ascending=False)
+elif sortby == '% of Gold':
+    oa_by_jnl_df = oa_by_jnl_df.sort_values(by='% OSTP Gold', ascending=False)
+elif sortby == '% of Bronze':
+    oa_by_jnl_df = oa_by_jnl_df.sort_values(by='% OSTP Bronze', ascending=False)
+elif sortby == '% of Hybrid':
+    oa_by_jnl_df = oa_by_jnl_df.sort_values(by='% OSTP Hybrid', ascending=False)
+
+
+fig = px.histogram(oa_by_jnl_df.iloc[:16], x='Name', y=['% OSTP closed', '% OSTP Green', '% OSTP Gold', '% OSTP Bronze', '% OSTP Hybrid'], #color='Mode',
+                  barnorm='percent', text_auto='.2f',
+                  color_discrete_sequence=["gray", "green", "gold", "darkgoldenrod", "red"],
+                  title='Open Access status of FF publications')#, facet_col='facet')
+
+fig.update_layout(
+    height=700, width=1200,
+    title_text='Open Access Status of U.S. Federally Funded Publications, by Journal Title 2017-2021 <br> Numbers 1-16 based on condition selected',
+    xaxis_title = 'Journal Title',
+    yaxis_title = 'Percentage FF Publications by OA Mode',
+    legend_traceorder="reversed",
+    legend_title_text='OA Type'
+)
+
+st.plotly_chart(fig, use_container_width=False)
+
+
+
+fig = px.histogram(oa_by_jnl_df.iloc[17:32], x='Name', y=['% OSTP closed', '% OSTP Green', '% OSTP Gold', '% OSTP Bronze', '% OSTP Hybrid'], #color='Mode',
+                  barnorm='percent', text_auto='.2f',
+                  color_discrete_sequence=["gray", "green", "gold", "darkgoldenrod", "red"],
+                  title='Open Access status of FF publications')#, facet_col='facet')
+
+fig.update_layout(
+    height=700, width=1200,
+    title_text='Open Access Status of U.S. Federally Funded Publications, by Journal Title 2017-2021 <br> Numbers 17-32 based on condition selected',
+    xaxis_title = 'Journal Title',
     yaxis_title = 'Percentage FF Publications by OA Mode',
     legend_traceorder="reversed",
     legend_title_text='OA Type'
