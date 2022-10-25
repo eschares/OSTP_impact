@@ -7,14 +7,12 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-import os
-import re
-from datetime import datetime
+# import os
+# import re
+# from datetime import datetime
 
-st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide', initial_sidebar_state="expanded")
+st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide') #, initial_sidebar_state="expanded")
 
-#st.set_page_config(layout="wide")
-#st.image('unsub_extender2.png')
 
 st.markdown('# Impact of the 2022 OSTP Memo:')
 st.header('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
@@ -77,7 +75,7 @@ if st.button('Find that Publisher'):
         st.session_state.publishers_to_change.append(publisher_name)
         
 # Actually do the changes in df; this runs every time the script runs but session_state lets me save the previous changes
-st.write('changing', st.session_state.publishers_to_change)
+#st.write('changing', st.session_state.publishers_to_change)
 for name in st.session_state.publishers_to_change:
     title_filter = (publishers_df['Name'] == name)
     publishers_df.loc[title_filter, 'color'] = 'red'
@@ -112,9 +110,10 @@ for i in range(num_rows):
     fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
                     y=publishers_df2["FF Pubs"].iloc[i],
                     text = publishers_df2["Name"].iloc[i],
-                    # showarrow = True,
+                    showarrow = False,
                         ax = 0,
-                        ay = -10
+                        yshift = 10
+                        #ay = -10
                     )
 
 fig.add_annotation(x=4.593, y=23500,
@@ -162,9 +161,10 @@ for i in range(num_rows):
     fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
                     y=publishers_df2["percentage"].iloc[i],
                     text = publishers_df2["Name"].iloc[i],
-                    # showarrow = True,
+                    showarrow = False,
                         ax = 0,
-                        ay = -10
+                        yshift = 10
+                        #ay = -10
                     )
 
 fig.add_annotation(x=3.576, y=52.5,
@@ -229,7 +229,7 @@ if st.button('Find that Journal'):
         st.session_state.jnls_to_change.append(journal_name)
 
 # Actually do the changes in df; this runs every time the script runs but session_state lets me save the previous changes
-st.write('changing', st.session_state.jnls_to_change)
+#st.write('changing', st.session_state.jnls_to_change)
 for name in st.session_state.jnls_to_change:
     title_filter = (jnl_df['Name'] == name)
     jnl_df.loc[title_filter, 'color'] = 'red'
@@ -264,9 +264,9 @@ for i in range(num_rows):
     fig.add_annotation(x=np.log10(jnl_df2['Worldwide']).iloc[i],
                        y=jnl_df2["FF Pubs"].iloc[i],
                        text = jnl_df2["Name"].iloc[i],
-                       # showarrow = True,
+                       showarrow = False,
                         ax = 0,
-                        ay = -12
+                        yshift = 12
                       )
     
 fig.add_annotation(x=4.433, y=6940,
@@ -305,9 +305,10 @@ for i in range(num_rows):
     fig.add_annotation(x=jnl_df2['Worldwide'].iloc[i],
                        y=jnl_df2["Percentage"].iloc[i],
                        text = jnl_df2["Name"].iloc[i],
-                       #showarrow = True,
+                       showarrow = False,
                         ax = 5,
-                        ay = -12
+                        yshift = 12
+                        #ay = -12
                       )
 
 fig.add_annotation(x=20344, y=53.3,
@@ -379,7 +380,7 @@ if st.button('Find that Institution'):
         st.session_state.resorgs_to_change.append(resorg_name)
 
 # Actually do the changes in df; this runs every time the script runs but session_state lets me save the previous changes
-st.write('changing', st.session_state.resorgs_to_change)
+#st.write('changing', st.session_state.resorgs_to_change)
 for name in st.session_state.resorgs_to_change:
     title_filter = (institution_df['Name'] == name)
     institution_df.loc[title_filter, 'color'] = 'red'
@@ -419,7 +420,7 @@ for i in range(num_rows):
                        y=inst_df2["FF Pubs"].iloc[i],
                        text = inst_df2["Name"].iloc[i],
                        # showarrow = True,
-                        ax = -100,
+                        ax = -80,
                         ay = -12
                       )
 
@@ -658,11 +659,13 @@ st.plotly_chart(fig, use_container_width=False)
 
 ##### Footer in sidebar #####
 #st.subheader("About")
-github = "[![GitHub repo stars](https://img.shields.io/github/stars/eschares/ostp_impact?logo=github&style=social)](<https://github.com/eschares/unsub_extender>)"
+github = "[![GitHub repo stars](https://img.shields.io/github/stars/eschares/ostp_impact?logo=github&style=social)](<https://github.com/eschares/ostp_impact>)"
 twitter = "[![Twitter Follow](https://img.shields.io/twitter/follow/eschares?style=social)](<https://twitter.com/eschares>)"
 zenodo = "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5167933.svg)](https://doi.org/10.5281/zenodo.5167933)"
-st.write(zenodo)
-st.write(twitter + " " + github)
 
-html_string = "<p style=font-size:13px>v1.0, last modified 10/24/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+st.write(zenodo + " " + github)
+
+html_string = "<p style=font-size:13px>v1.0, last modified 10/25/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
+
+st.write(twitter)
