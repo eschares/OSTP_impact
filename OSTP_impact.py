@@ -16,17 +16,18 @@ st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide', initia
 #st.set_page_config(layout="wide")
 #st.image('unsub_extender2.png')
 
-st.markdown('# Impact of the 2022 OSTP Memo: A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
+st.markdown('# Impact of the 2022 OSTP Memo:')
+st.header('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
 #st.title('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
 
-with st.expander("Explanation"):
+with st.expander("About:"):
     st.write("""
         On August 25, 2022, the White House Office of Science and Technology Policy (OSTP) released a [memo](https://www.whitehouse.gov/ostp/news-updates/2022/08/25/ostp-issues-guidance-to-make-federally-funded-research-freely-available-without-delay/) regarding public access to scientific research.
         This updated guidance eliminated the 12-month embargo on publications arising from U.S. federal funding that had been in effect from a previous 2013 OSTP memo.
         
         The OSTP released a companion report with the memo, but it only provided a broad estimate of total numbers affected per year.
 
-        Therefore, this study seeks to more deeply investigate the characteristics of U.S. federally funded research over a 5-year period from 2017-2021 to better understand the updated guidance's impact. It uses a manually created custom filter in the Dimensions database to return only publications that arise from U.S. federal funding.
+        **Therefore, this study seeks to more deeply investigate the characteristics of U.S. federally funded research** over a 5-year period from 2017-2021 to better understand the impact of the updated guidance. It uses a manually created custom filter in the Dimensions database to return only publications that arise from U.S. federal funding.
         
         Results show that an average of 265,000 articles are published each year that acknowledge U.S. federal funding agencies. These research outputs are further examined to look at patterns by publisher, journal title, institutions, and Open Access status.
         
@@ -36,7 +37,7 @@ with st.expander("Explanation"):
     """)
 
 
-
+st.markdown("""---""")
 st.header('Number')
 st.write('The number of U.S. federally funded publications per year in Dimensions are:')
 
@@ -57,7 +58,7 @@ if 'resorgs_to_change' not in st.session_state:
     st.session_state.resorgs_to_change = []
 
 
-
+st.markdown("""---""")
 st.header('Publishers')
 publishers_df = pd.read_csv('Publishers.csv', header=1)
 if st.checkbox('Show raw publisher data'):
@@ -206,7 +207,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-
+st.markdown("""---""")
 ### Journals ###
 st.header('Journal Titles')
 
@@ -357,7 +358,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-
+st.markdown("""---""")
 ### Research Institutions ###
 st.header('Research Institutions')
 
@@ -476,7 +477,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-
+st.markdown("""---""")
 ### Open Access ###
 st.header('Open Access Status')
 
@@ -529,7 +530,7 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=False)
 
 
-
+st.markdown("""---""")
 ### OA of publishers ###
 st.subheader('OA Status of Federally Funded pubs by Publisher')
 oa_by_pub_df = pd.read_csv('Publishers.csv', header=1)
@@ -592,7 +593,7 @@ st.plotly_chart(fig, use_container_width=False)
 
 
 
-
+st.markdown("""---""")
 ### OA of Journals ###
 st.subheader('OA Status of Federally Funded pubs by Journal title')
 oa_by_jnl_df = pd.read_csv('Journal_titles.csv', header=1)
