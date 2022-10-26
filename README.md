@@ -5,6 +5,7 @@ This site hosts the underlying data for an analysis of the impact of the 2022 OS
 This analysis looks at five years of publications from 2017-2021 to investigate the characteristics of those research outputs that would have fallen under this updated guidance.
 
 Topics include
+- Funders
 - Publishers
 - Journal titles
 - Research institutions
