@@ -1,0 +1,321 @@
+"About the data: Analytical views - Funder - Exported on Oct 18, 2022. Criteria: My groups is US YES federal funders; Publication Year is 2017 or 2018 or 2019 or 2020 or 2021; Country of Funder is United States; Publication Type is not Preprint. © 2022 Digital Science &amp; Research Solutions Inc. All rights reserved. Parts of this work may also be protected by copyright of content providers and other third parties, which together with all rights of Digital Science, user agrees not to violate. Redistribution / external use of this work (or parts thereof) is prohibited without prior written approval. Please contact info@dimensions.ai for further information.  1,326,472",,,,,
+ID,Name,Country,Publications,Citations,Citations (mean)
+grid.48336.3a,National Cancer Institute (NCI),United States,137496,3999025,29.08
+grid.457875.c,Directorate for Mathematical & Physical Sciences (NSF MPS),United States,118881,2476894,20.84
+grid.280785.0,National Institute of General Medical Sciences (NIGMS),United States,118095,3186983,26.99
+grid.85084.31,United States Department of Energy (DOE),United States,113712,2732322,24.03
+grid.279885.9,National Heart Lung and Blood Institute (NHLBI),United States,89767,2144465,23.89
+grid.457785.c,Directorate for Computer & Information Science & Engineering (NSF CISE),United States,80068,1373932,17.16
+grid.457810.f,Directorate for Engineering (NSF ENG),United States,77784,1557155,20.02
+grid.429651.d,National Center for Advancing Translational Sciences (NCATS),United States,77170,1761195,22.82
+grid.419681.3,National Institute of Allergy and Infectious Diseases (NIAID),United States,76801,2242077,29.19
+grid.431093.c,National Science Foundation (NSF),United States,72782,1486563,20.42
+grid.419635.c,National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK),United States,68417,1837941,26.86
+grid.419475.a,National Institute on Aging (NIA),United States,56936,1438213,25.26
+grid.420089.7,Eunice Kennedy Shriver National Institute of Child Health and Human Development (NICHD),United States,56231,1148897,20.43
+grid.416870.c,National Institute of Neurological Disorders and Stroke (NINDS),United States,53332,1454807,27.28
+grid.416868.5,National Institute of Mental Health (NIMH),United States,52675,1302408,24.73
+grid.238252.c,National Aeronautics and Space Administration (NASA),United States,51720,1098801,21.25
+grid.457768.f,Directorate for Biological Sciences (NSF BIO),United States,47895,1139796,23.8
+grid.452988.a,Office of Basic Energy Sciences (BES),United States,42475,1197458,28.19
+grid.457836.b,Directorate for Geosciences (NSF GEO),United States,37655,736415,19.56
+grid.457799.1,Directorate for Education & Human Resources (NSF EHR),United States,34905,695290,19.92
+grid.420090.f,National Institute on Drug Abuse (NIDA),United States,34578,692709,20.03
+grid.418356.d,United States Department of Veterans Affairs (VA ),United States,31342,634369,20.24
+grid.453216.7,Office of Science (DOE SC),United States,31053,759168,24.45
+grid.482914.2,National Institute of Food and Agriculture (NIFA),United States,30407,471496,15.51
+grid.453125.4,Office of the Director (OD),United States,28009,764598,27.3
+grid.94365.3d,National Institutes of Health (NIH),United States,27345,601510,22
+grid.482851.2,Office of Naval Research (ONR),United States,27096,652980,24.1
+grid.280664.e,National Institute of Environmental Health Sciences (NIEHS),United States,25364,610482,24.07
+grid.280347.a,National Institute of Biomedical Imaging and Bioengineering (NIBIB),United States,23869,626381,26.24
+grid.507554.6,United States Air Force Office of Scientific Research (AFOSR),United States,22865,548930,24.01
+grid.420086.8,National Institute of Arthritis and Musculoskeletal and Skin Diseases (NIAMS),United States,22242,550576,24.75
+grid.280030.9,National Eye Institute (NEI),United States,20216,420633,20.81
+grid.417548.b,United States Department of Agriculture (USDA),United States,18647,257703,13.82
+grid.457916.8,"Directorate for Social, Behavioral & Economic Sciences (NSF SBE)",United States,18142,310529,17.12
+grid.421816.8,Defense Advanced Research Projects Agency (DARPA),United States,16714,432329,25.87
+grid.416738.f,Centers for Disease Control and Prevention (CDC),United States,16421,394698,24.04
+grid.507553.1,United States Army Research Office (US ARO),United States,16380,460206,28.1
+grid.496791.4,Congressionally Directed Medical Research Programs (CDMRP),United States,16069,459799,28.61
+grid.3532.7,National Oceanic and Atmospheric Administration (NOAA),United States,15675,287927,18.37
+grid.420085.b,National Institute on Alcohol Abuse and Alcoholism (NIAAA),United States,15438,277836,18
+grid.420391.d,United States Department of Defense (USDOD ),United States,14807,343868,23.22
+grid.280128.1,National Human Genome Research Institute (NHGRI),United States,13371,691796,51.74
+grid.427645.6,American Heart Association (AHA),United States,13312,313915,23.58
+grid.457898.f,Office of the Director (NSF OD),United States,12677,258021,20.35
+grid.214431.1,National Institute on Deafness and Other Communication Disorders (NIDCD),United States,12254,211629,17.27
+grid.2865.9,United States Geological Survey (USGS),United States,11976,198972,16.61
+grid.419633.a,National Institute of Dental and Craniofacial Research (NIDCR),United States,11452,279260,24.39
+grid.281076.a,National Institute on Minority Health and Health Disparities (NIMHD),United States,11249,185167,16.46
+grid.187073.a,Argonne National Laboratory (ANL),United States,10840,288217,26.59
+grid.417587.8,United States Food and Drug Administration (FDA ),United States,10691,194958,18.24
+grid.452963.f,Office of Biological and Environmental Research (BER),United States,10516,298800,28.41
+grid.453023.3,National Nuclear Security Administration (NNSA),United States,10354,142190,13.73
+grid.418698.a,Environmental Protection Agency (EPA),United States,9883,205607,20.8
+grid.413575.1,Howard Hughes Medical Institute (HHMI),United States,9747,584043,59.92
+grid.413404.6,Agency for Healthcare Research and Quality (AHRQ),United States,9541,150749,15.8
+grid.453035.4,Fogarty International Center (FIC),United States,9284,153238,16.51
+grid.148313.c,Los Alamos National Laboratory (LANL),United States,8040,169350,21.06
+grid.430264.7,Simons Foundation (Simons),United States,7713,236994,30.73
+grid.420285.9,United States Agency for International Development (USAID),United States,7678,160741,20.94
+grid.94225.38,National Institute of Standards and Technology (NIST),United States,7223,143650,19.89
+grid.280738.6,National Institute of Nursing Research (NINR),United States,7181,109408,15.24
+grid.452922.a,Welch Foundation,United States,6904,197789,28.65
+grid.280285.5,United States National Library of Medicine (NLM),United States,6893,254279,36.89
+grid.184769.5,Lawrence Berkeley National Laboratory (LBL),United States,6862,216898,31.61
+grid.453003.1,Office of Energy Efficiency and Renewable Energy (EERE),United States,6704,166360,24.82
+grid.472551.0,US Forest Service (USFS),United States,6646,87748,13.2
+grid.422418.9,American Cancer Society (ACS),United States,6605,224244,33.95
+grid.420282.e,United States Army Research Laboratory (ARL),United States,6512,120155,18.45
+grid.135519.a,Oak Ridge National Laboratory (ORNL),United States,6311,140857,22.32
+grid.27873.39,Battelle,United States,6278,127140,20.25
+grid.453006.4,Alfred P. Sloan Foundation,United States,6273,211987,33.79
+grid.418309.7,Bill & Melinda Gates Foundation (BMGF ),United States,6161,319251,51.82
+grid.419881.d,United States Department of Education (DoED),United States,5594,75354,13.47
+grid.462979.7,United States Fish and Wildlife Service (FWS),United States,5252,45990,8.76
+grid.280655.c,National Center for Complementary and Integrative Health (NCCIH),United States,5208,122789,23.58
+grid.453025.5,Office of Nuclear Physics (NP),United States,5071,99380,19.6
+grid.453015.6,Research to Prevent Blindness (RPB),United States,5027,85686,17.05
+grid.417730.6,United States Air Force Research Laboratory (AFRL),United States,4905,81537,16.62
+grid.452983.1,Cancer Prevention and Research Institute of Texas (CPRIT),United States,4814,189841,39.44
+grid.452918.3,Defense Threat Reduction Agency (DTRA),United States,4787,111466,23.29
+grid.452959.6,Gordon and Betty Moore Foundation,United States,4754,201675,42.42
+grid.419882.e,United States Department of Transportation (USDOT),United States,4729,61345,12.97
+grid.27235.31,United States Department of Health and Human Services (DHHS),United States,4473,86004,19.23
+grid.202665.5,Brookhaven National Laboratory (BNL),United States,4404,116261,26.4
+grid.515271.5,"Directorate for Technology, Innovation and Partnerships (NSF TIP)",United States,4142,70940,17.13
+grid.250008.f,Lawrence Livermore National Laboratory (LLL),United States,4055,68761,16.96
+grid.419971.3,Bristol-Myers Squibb (United States) (BMS),United States,3996,208186,52.1
+grid.410513.2,Pfizer (United States) (Pfizer),United States,3865,163900,42.41
+grid.454842.b,Health Resources and Services Administration (HRSA),United States,3856,52661,13.66
+grid.416809.2,National Institute for Occupational Safety and Health (NIOSH),United States,3790,48001,12.67
+grid.211367.0,Jet Propulsion Lab (JPL),United States,3760,81074,21.56
+grid.427464.7,Burroughs Wellcome Fund (BWF),United States,3499,174541,49.88
+grid.453030.1,Office of Fusion Energy Sciences (FES),United States,3492,39752,11.38
+grid.420176.6,United States Army (USA),United States,3482,47143,13.54
+grid.427904.c,United States Department of the Army (DA),United States,3445,71641,20.8
+grid.66875.3a,Mayo Clinic,United States,3352,91906,27.42
+grid.452934.d,Advanced Research Projects Agency-Energy (ARPA-E),United States,3266,79314,24.28
+grid.420434.5,United States Department of the Navy (DON),United States,3220,67837,21.07
+grid.57828.30,National Center for Atmospheric Research (NCAR),United States,3181,67695,21.28
+grid.427710.7,Brain & Behavior Research Foundation,United States,3178,96858,30.48
+grid.422384.b,Alzheimer's Association (ALZ),United States,3092,95205,30.79
+grid.417540.3,Eli Lilly (United States) (Eli Lilly & Company),United States,3041,133078,43.76
+grid.416781.d,National Center for Chronic Disease Prevention and Health Promotion (NCCDPHP),United States,2986,46990,15.74
+grid.418158.1,Roche (United States) (Roche),United States,2968,143913,48.49
+grid.417429.d,Johnson & Johnson (United States) (J&J),United States,2965,120283,40.57
+grid.294525.d,Semiconductor Research Corporation (SRC),United States,2845,58081,20.42
+grid.417763.0,David and Lucile Packard Foundation,United States,2836,114142,40.25
+grid.239134.e,United States Department of the Interior (DOI),United States,2806,46610,16.61
+grid.453070.5,Office of Advanced Scientific Computing Research (ASCR),United States,2804,59776,21.32
+grid.453134.4,Rehabilitation Research and Development Service (JRRD),United States,2779,48975,17.62
+grid.451363.6,National Energy Technology Laboratory (NETL),United States,2745,58227,21.21
+grid.418424.f,Novartis (United States) (NPC),United States,2725,138413,50.79
+grid.286879.a,American Chemical Society (ACS),United States,2697,58647,21.75
+grid.453031.0,Office of Nuclear Energy (NE),United States,2570,35162,13.68
+grid.428807.1,Foundation for the National Institutes of Health (FNIH),United States,2541,45400,17.87
+grid.419357.d,National Renewable Energy Laboratory (NREL),United States,2534,76576,30.22
+grid.32224.35,Massachusetts General Hospital (MGH),United States,2522,120521,47.79
+grid.133275.1,Goddard Space Flight Center (GSFC),United States,2514,52143,20.74
+grid.454846.f,National Park Service (NPS),United States,2496,36446,14.6
+grid.421530.1,Institute of Education Sciences (IES),United States,2466,27716,11.24
+grid.413874.d,Centers for Medicare and Medicaid Services (CMS),United States,2434,46337,19.04
+grid.418152.b,AstraZeneca (United States) (AstraZeneca),United States,2389,133767,55.99
+grid.417993.1,MSD (United States) (MSD),United States,2347,123717,52.71
+grid.417555.7,Sanofi (United States) (Sanofi),United States,2331,108198,46.42
+grid.463419.d,Agricultural Research Service (ARS),United States,2252,29071,12.91
+grid.453063.7,W. M. Keck Foundation (W.M. Keck Foundation),United States,2187,63697,29.13
+grid.420451.6,Google (United States),United States,2185,113899,52.13
+grid.473761.0,Office of the Secretary of Defense (OSD),United States,2176,48336,22.21
+grid.484220.8,National Institute of Justice (NIJ),United States,2157,26274,12.18
+grid.427608.f,American Diabetes Association (ADA),United States,2138,61874,28.94
+grid.418227.a,Gilead Sciences (United States) (Gilead),United States,2089,90276,43.21
+grid.431072.3,"AbbVie (United States) (Abbvie Biotherapeutics, Inc)",United States,2074,87782,42.32
+grid.433574.2,United States Department of Homeland Security (DHS),United States,2069,34476,16.66
+grid.418143.b,General Electric (United States) (GE),United States,2010,53914,26.82
+grid.453002.0,United States Air Force (USAF),United States,1962,29337,14.95
+grid.419318.6,Intel (United States),United States,1943,69784,35.92
+grid.430109.f,Patient-Centered Outcomes Research Institute (PCORI),United States,1940,32471,16.74
+grid.453027.7,Vehicle Technologies Office (Vehicle Technologies Office),United States,1912,74460,38.94
+grid.427821.a,Breast Cancer Research Foundation (BCRF),United States,1910,98304,51.47
+grid.419849.9,"Takeda (United States) (Millennium Pharmaceuticals, Inc)",United States,1880,104819,55.75
+grid.488591.9,Office of the Director of National Intelligence (ODNI),United States,1876,76825,40.95
+grid.419980.d,National Center for HIV/AIDS Viral Hepatitis STD and TB Prevention (NCHSTP),United States,1815,32659,17.99
+grid.410305.3,National Institutes of Health Clinical Center (CLC),United States,1780,41210,23.15
+grid.422252.1,National Geographic Society (NGS),United States,1779,26532,14.91
+grid.419213.c,Robert Wood Johnson Foundation (RWJF),United States,1760,38706,21.99
+grid.467923.d,National Center for Emerging and Zoonotic Infectious Diseases (NCEZID),United States,1752,33733,19.25
+grid.429529.1,Leukemia and Lymphoma Society (LLS),United States,1719,81680,47.52
+grid.467489.0,Interface (United States),United States,1710,82340,48.15
+grid.413759.d,Animal and Plant Health Inspection Service (APHIS),United States,1693,18063,10.67
+grid.451133.1,Nvidia (United States),United States,1677,121969,72.73
+grid.452951.e,John Templeton Foundation (Templeton),United States,1667,59335,35.59
+grid.417574.4,Abbott (United States),United States,1646,69445,42.19
+grid.428834.1,Susan G. Komen Breast Cancer Foundation (Komen),United States,1603,62687,39.11
+grid.420210.5,United States Army Medical Research and Development Command (USAMRMC),United States,1556,25155,16.17
+grid.427709.f,Cystic Fibrosis Foundation (CFF),United States,1536,39294,25.58
+grid.240871.8,St. Jude Children's Research Hospital,United States,1527,73934,48.42
+grid.427554.5,Alzheimer's Drug Discovery Foundation (ADDF),United States,1518,36863,24.28
+grid.473857.a,"National Institute on Disability, Independent Living, and Rehabilitation Research (NIDILRR)",United States,1514,16272,10.75
+grid.419670.d,Bayer (United States) (Bayer Healthcare),United States,1508,83924,55.65
+grid.419075.e,Ames Research Center (ARC),United States,1450,32547,22.45
+grid.453038.9,Doris Duke Charitable Foundation (DDCF),United States,1381,45267,32.78
+grid.419474.b,Lockheed Martin (United States),United States,1364,22465,16.47
+grid.417886.4,"Amgen (United States) (Amgen, Inc.)",United States,1347,65220,48.42
+grid.418412.a,Boehringer Ingelheim (United States) (Boehringer Ingelheim Pharmaceuticals),United States,1332,68676,51.56
+grid.410547.3,Oak Ridge Associated Universities (ORAU),United States,1324,23917,18.06
+grid.429527.f,National Multiple Sclerosis Society,United States,1297,46675,35.99
+grid.431335.3,United States Army Corps of Engineers (CoE),United States,1297,17319,13.35
+grid.453275.2,National Center for Injury Prevention and Control (NCIPC),United States,1291,22296,17.27
+grid.430781.9,Michael J. Fox Foundation,United States,1278,46346,36.26
+grid.413730.2,Substance Abuse and Mental Health Services Administration (SAMHSA),United States,1226,18341,14.96
+grid.419815.0,Microsoft (United States),United States,1214,34858,28.71
+grid.417684.8,United States Public Health Service (USPHS),United States,1203,30397,25.27
+grid.417832.b,Biogen (United States),United States,1196,40954,34.24
+grid.295852.1,Aspen Center For Physics (ACP),United States,1186,37134,31.31
+grid.453146.1,Prostate Cancer Foundation (PCF),United States,1156,54685,47.31
+grid.419408.0,March of Dimes (March of Dimes),United States,1136,37448,32.96
+grid.418557.a,California Institute for Regenerative Medicine (CIRM),United States,1128,56536,50.12
+grid.453773.1,Wisconsin Alumni Research Foundation (WARF),United States,1125,22276,19.8
+grid.452984.6,Research Corporation for Science Advancement (RCSA),United States,1101,34396,31.24
+grid.239552.a,Children's Hospital of Philadelphia (CHOP),United States,1093,26999,24.7
+grid.453008.a,Damon Runyon Cancer Research Foundation (DRCRF),United States,1093,84460,77.27
+grid.453225.7,Pew Charitable Trusts (Pew Charitable Trusts),United States,1092,45970,42.1
+grid.418961.3,Regeneron (United States),United States,1083,45608,42.11
+grid.62560.37,Brigham and Women's Hospital (BWH),United States,1076,39250,36.48
+grid.453017.4,James S. McDonnell Foundation (JSMF),United States,1066,31920,29.94
+grid.417882.0,Allergan (United States),United States,1056,34946,33.09
+grid.419673.e,Medtronic (United States) (Medtronic),United States,1047,35776,34.17
+grid.483785.5,Federal Highway Administration (FHWA),United States,1042,13119,12.59
+grid.418905.1,Boston Scientific (United States) (BSC),United States,1029,33251,32.31
+grid.418276.e,Carnegie Institution for Science (CIS),United States,1011,36214,35.82
+grid.453107.4,Climate Program Office (CPO),United States,1002,26794,26.74
+grid.453339.b,V Foundation for Cancer Research (V Found),United States,1000,52178,52.18
+grid.453152.4,BrightFocus Foundation (BrightFocus),United States,975,27933,28.65
+grid.239573.9,Cincinnati Children's Hospital Medical Center (CCHMC),United States,964,24629,25.55
+grid.453082.8,John D. and Catherine T. MacArthur Foundation,United States,964,29648,30.76
+grid.453268.e,Leona M. and Harry B. Helmsley Charitable Trust (Helmsley),United States,958,52441,54.74
+grid.429195.2,Heising-Simons Foundation,United States,946,32977,34.86
+grid.453228.a,Arnold and Mabel Beckman Foundation (Beckman),United States,936,24126,25.78
+grid.300180.a,Louisiana Board of Regents,United States,932,11109,11.92
+grid.430712.3,St. Baldrick's Foundation (SBF),United States,924,36543,39.55
+grid.417553.1,Engineer Research and Development Center (ERDC),United States,911,10844,11.9
+grid.421660.7,Crohn's and Colitis Foundation (CCF),United States,903,43094,47.72
+grid.457570.4,Center for Hierarchical Manufacturing (CHM),United States,879,13960,15.88
+grid.429307.b,Juvenile Diabetes Research Foundation (JDRF),United States,872,24354,27.93
+grid.453001.3,Wenner-Gren Foundation,United States,872,12485,14.32
+grid.430804.b,Muscular Dystrophy Association (MDA),United States,870,29199,33.56
+grid.453012.1,Camille and Henry Dreyfus Foundation,United States,865,25798,29.82
+grid.420747.2,Honeywell (United States),United States,836,14468,17.31
+grid.270240.3,Fred Hutchinson Cancer Research Center (FHCRC),United States,814,29370,36.08
+grid.415913.b,Naval Medical Research Center (NMRC),United States,809,27511,34.01
+grid.280365.a,Pennsylvania Department of Health (Pennsylvania Department of Health),United States,801,20211,25.23
+grid.471137.7,Cook Medical (United States),United States,799,25193,31.53
+grid.481113.e,Scripps (United States),United States,794,28180,35.49
+grid.238491.5,New York State Department of Health (NYSDOH),United States,793,22290,28.11
+grid.453121.0,National Sleep Foundation (NSF),United States,791,11384,14.39
+grid.458401.c,President's Emergency Plan for AIDS Relief (PEPFAR),United States,787,8362,10.63
+grid.239578.2,Cleveland Clinic,United States,786,28102,35.75
+grid.417922.b,Ford Motor Company (United States),United States,782,18243,23.33
+grid.56466.37,Woods Hole Oceanographic Institution (WHOI),United States,775,11934,15.4
+grid.454854.c,Division of Program Coordination Planning and Strategic Initiatives (DPCPSI),United States,771,17119,22.2
+grid.423379.8,United States Department of Justice (DOJ),United States,763,8669,11.36
+grid.467419.9,Mars (United States),United States,760,16575,21.81
+grid.483884.b,Hydrogen and Fuel Cells Technologies Office (HFTO),United States,754,31894,42.3
+grid.453259.c,Office of Fossil Energy (FE),United States,751,21339,28.41
+grid.431418.b,United States Nuclear Regulatory Commission (NRC),United States,748,7215,9.65
+grid.417851.e,Fermilab (Fermilab),United States,729,15688,21.52
+grid.430722.0,Alex's Lemonade Stand Foundation (ALSF),United States,725,31474,43.41
+grid.422538.a,American Society of Hematology (ASH),United States,722,24843,34.41
+grid.453192.8,Indiana Clinical and Translational Sciences Institute (CTSI),United States,709,13052,18.41
+grid.280840.6,American Association For Cancer Research (AACR),United States,704,41940,59.57
+grid.438526.e,Virginia Tech,United States,704,13527,19.21
+grid.468466.e,Alexander Graham Bell Association for the Deaf and Hard of Hearing (AAPTSD),United States,688,16581,24.1
+grid.418574.b,Dow Chemical (United States),United States,684,20332,29.73
+grid.213917.f,Georgia Institute of Technology (GT),United States,681,17313,25.42
+grid.239119.1,United States Department of Commerce (USDoC),United States,677,14074,20.79
+grid.419260.8,National Center for Immunization and Respiratory Diseases (NIP),United States,672,19794,29.46
+grid.457891.6,Division of Materials Research (NSF DMR),United States,667,14419,21.62
+grid.410422.1,Center for Information Technology (CIT),United States,662,13538,20.45
+grid.301036.7,Purdue Research Foundation (PRF),United States,661,12241,18.52
+grid.416789.5,National Center for Health Statistics (NCHS),United States,661,12521,18.94
+grid.453253.6,Adelson Foundation,United States,656,43594,66.45
+grid.468210.9,Chicago Community Trust (CCT),United States,638,36915,57.86
+grid.236815.b,California Department of Public Health (CDPH),United States,637,11882,18.65
+grid.453439.c,Melanoma Research Alliance (MRA),United States,628,40067,63.8
+grid.427612.4,American Federation for Aging Research (AFAR),United States,627,24447,38.99
+grid.453518.e,Office of Dietary Supplements (ODS),United States,624,11260,18.04
+grid.419085.1,Johnson Space Center (JSC),United States,620,11513,18.57
+grid.297656.9,Geological Society of America (GSA),United States,619,7901,12.76
+grid.457885.3,Division of Chemistry (NSF CHE),United States,613,10789,17.6
+grid.453367.0,JPB Foundation,United States,610,50814,83.3
+grid.430790.9,BioClinica (United States),United States,607,16050,26.44
+grid.239359.7,Barnes-Jewish Hospital,United States,599,17203,28.72
+grid.240614.5,Roswell Park Comprehensive Cancer Center (RPCI),United States,598,17511,29.28
+grid.410425.6,City Of Hope National Medical Center,United States,596,15012,25.19
+grid.427509.d,California Natural Resources Agency (CNRA),United States,596,10346,17.36
+grid.495456.f,United States Department of the Air Force (DAF),United States,595,8867,14.9
+grid.419086.2,Langley Research Center (LaRC),United States,594,8495,14.3
+grid.298859.7,American Mathematical Society (AMS),United States,586,12560,21.43
+grid.453445.7,National Center on Birth Defects and Developmental Disabilities (NCBDD),United States,583,11090,19.02
+grid.410382.c,Florida Department of Health (FDOH),United States,579,12853,22.2
+grid.421234.2,ExxonMobil (United States),United States,572,14065,24.59
+grid.427598.5,Autism Speaks (Autism Speaks),United States,572,18722,32.73
+grid.453622.4,Rheumatology Research Foundation (Rheumatology Research Foundation),United States,572,16691,29.18
+grid.457892.5,Division of Mathematical Sciences (NSF DMS),United States,570,4862,8.53
+grid.457900.f,Office of Integrative Activities (NSF OIA),United States,570,9469,16.61
+grid.453440.2,Glenn Foundation for Medical Research (Glenn Foundation for Medical Research),United States,568,35391,62.31
+grid.418547.b,Hewlett-Packard (United States) (HP),United States,567,17245,30.41
+grid.428791.1,Foundation Fighting Blindness (FFB),United States,567,12036,21.23
+grid.453187.c,Leakey Foundation,United States,554,8002,14.44
+grid.418402.b,"United States Army Research, Development and Engineering Command (RDECOM)",United States,553,9084,16.43
+grid.462413.6,John Wiley & Sons (United States),United States,546,21017,38.49
+grid.413872.b,Arizona Department of Health Services (ADHS),United States,544,16794,30.87
+grid.416832.a,DuPont (United States),United States,542,13868,25.59
+grid.453840.e,Women's Health Initiative (WHI),United States,542,13092,24.15
+grid.421513.0,Mallinckrodt (United States),United States,534,24927,46.68
+grid.453260.6,Cancer Research Institute (CRI),United States,533,53778,100.9
+grid.201075.1,Henry M. Jackson Foundation (HJF),United States,528,13458,25.49
+grid.506868.5,Conquer Cancer Foundation (Conquer Cancer),United States,526,24702,46.96
+grid.467664.1,Savannah River Operations Office (DOE-SR),United States,524,6615,12.62
+grid.431185.a,New York State Energy Research and Development Authority (NYSERDA),United States,520,6694,12.87
+grid.431673.4,Washington Research Foundation (WRF),United States,520,35137,67.57
+grid.474945.f,Achievement Rewards for College Scientists Foundation (ARCS),United States,520,10735,20.64
+grid.430819.7,New York Stem Cell Foundation (NYSCF),United States,515,37353,72.53
+grid.468198.a,Moffitt Cancer Center,United States,515,14677,28.5
+grid.507680.c,Walter Reed Army Institute of Research (WRAIR),United States,503,7348,14.61
+grid.422475.2,American Lung Association (ALA),United States,502,14610,29.1
+grid.418190.5,Thermo Fisher Scientific (United States) (Life Technologies),United States,501,18873,37.67
+grid.419233.e,Siemens (United States),United States,495,13573,27.42
+grid.454863.8,Oklahoma Center for the Advancement of Science and Technology (OCAST),United States,494,9817,19.87
+grid.65499.37,Dana-Farber Cancer Institute,United States,494,23713,48
+grid.420318.c,United Nations Children's Fund (UNICEF),United States,488,9954,20.4
+grid.452939.0,United Nations (UN),United States,477,16971,35.58
+grid.431434.5,Bloomberg (United States),United States,476,26055,54.74
+grid.453250.5,Whitehall Foundation,United States,476,14217,29.87
+grid.62562.35,RTI International,United States,473,8795,18.59
+grid.423121.7,Boeing (United States),United States,472,15387,32.6
+grid.457801.f,Division of Graduate Education (NSF DGE),United States,468,15492,33.1
+grid.280937.7,American Psychological Association (APA),United States,463,7855,16.97
+grid.453939.1,Georgia Research Alliance (GRA),United States,462,11253,24.36
+grid.423286.9,Astellas Pharma (United States) (Astellas Pharma),United States,461,26111,56.64
+grid.478570.9,Cancer Research Foundation,United States,461,27280,59.18
+grid.430427.6,Entertainment Industry Foundation (EIF),United States,460,39996,86.95
+grid.479969.c,Huntsman Cancer Institute (HCI),United States,459,10478,22.83
+grid.507326.5,Chan Zuckerberg Initiative (United States) (CZI),United States,459,28323,61.71
+grid.453921.8,Hartwell Foundation,United States,458,16505,36.04
+grid.457846.c,Office of Polar Programs (NSF PLR),United States,456,10191,22.35
+grid.280247.b,Pacific Institute For Research and Evaluation (PIRE),United States,453,6317,13.94
+grid.413692.b,American Hospital Association (AHA),United States,453,12164,26.85
+grid.422239.c,National Endowment for the Humanities (NEH),United States,451,4050,8.98
+grid.418232.e,Baxter (United States),United States,449,24444,54.44
+grid.453252.7,Pharmaceutical Research and Manufacturers of America (PhRMA),United States,447,10134,22.67
+grid.481321.d,Starr Foundation,United States,436,35734,81.96
+grid.453302.3,Gulf of Mexico Research Initiative (GoMRI),United States,432,6268,14.51
+grid.452976.b,Larry Ellison Foundation (EMF),United States,428,26785,62.58
+grid.468565.c,Children’s Discovery Institute (CDI),United States,428,11671,27.27
+grid.433838.7,William Thomas Grant Foundation (WTGF),United States,425,6340,14.92
+grid.453438.d,Dermatology Foundation (DF),United States,419,11334,27.05
+grid.458379.4,Quality Enhancement Research Initiative (QUERI),United States,414,6542,15.8
+grid.1052.6,Ludwig Cancer Research (LICR),United States,412,38451,93.33
