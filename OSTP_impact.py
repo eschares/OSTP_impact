@@ -673,6 +673,11 @@ st.write(twitter)
 
 components.html(
 """
-<a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img src="https://c.statcounter.com/12810611/0/c7ce9654/1/" alt="Web Analytics" ></a>
+<a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/12810611/0/c7ce9654/1/"
+alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a>
 """
 )
