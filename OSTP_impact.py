@@ -4,6 +4,7 @@ Created on Mon Oct 24 11:59:06 2022
 @author: eschares
 """
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -669,3 +670,9 @@ html_string = "<p style=font-size:13px>v1.0, last modified 10/25/22 <br />Create
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(twitter)
+
+components.html(
+"""
+<a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img src="https://c.statcounter.com/12810611/0/c7ce9654/1/" alt="Web Analytics" ></a>
+"""
+)
