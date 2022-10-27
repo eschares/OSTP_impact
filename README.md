@@ -2,6 +2,8 @@
 
 This site hosts the underlying data for an analysis of the impact of the 2022 OSTP memo. The updated guidance eliminates the 12-month embargo period on publications arising from U.S. federal funding.
 
+[https://arxiv.org/abs/2210.14871](https://arxiv.org/abs/2210.14871)
+
 This analysis looks at five years of publications from 2017-2021 to investigate the characteristics of those research outputs that would have fallen under this updated guidance.
 
 Topics include
