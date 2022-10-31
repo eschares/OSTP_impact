@@ -26,13 +26,15 @@ with st.expander("About:"):
         
         The OSTP released a companion report with the memo, but it only provided a broad estimate of total numbers affected per year.
 
-        **Therefore, this study seeks to more deeply investigate the characteristics of U.S. federally funded research** over a 5-year period from 2017-2021 to better understand the impact of the updated guidance. It uses a manually created custom filter in the Dimensions database to return only publications that arise from U.S. federal funding.
+        **Therefore, [this study](https://arxiv.org/abs/2210.14871) seeks to more deeply investigate the characteristics of U.S. federally funded research** over a 5-year period from 2017-2021 to better understand the impact of the updated guidance. It uses a manually created custom filter in the Dimensions database to return only publications that arise from U.S. federal funding.
         
         Results show that an average of 265,000 articles are published each year that acknowledge U.S. federal funding agencies. These research outputs are further examined to look at patterns by publisher, journal title, institutions, and Open Access status.
         
-        Each section shows interactive charts and graphs both by absolute number and by percentage of total.
+        This companion website shows interactive versions of the charts and graphs, both by absolute number and by percentage of total.
 
         Additionally, you may search for a particular publisher, journal title, or research institution and label it and color it red to make it easier to distinguish on the graphs.
+
+        The dataset and code are available at the Github repo, [https://github.com/eschares/OSTP_impact](https://github.com/eschares/OSTP_impact).
     """)
 
 
