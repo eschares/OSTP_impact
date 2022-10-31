@@ -681,3 +681,27 @@ alt="Web Analytics"
 referrerPolicy="no-referrer-when-downgrade"></a>
 """
 )
+
+html_string_statcounter = '''
+<!-- Default Statcounter code for OSTP Impact, Streamlit
+Cloud
+https://eschares-ostp-impact-ostp-impact-zgsykn.streamlitapp.com/
+-->
+<script type="text/javascript">
+var sc_project=12810611; 
+var sc_invisible=1; 
+var sc_security="c7ce9654"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/12810611/0/c7ce9654/1/"
+alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+'''
+
+components.html(html_string_statcounter)  # JavaScript works
