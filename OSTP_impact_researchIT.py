@@ -17,6 +17,7 @@ st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide') #, ini
 
 st.markdown('# Impact of the 2022 OSTP Memo:')
 st.header('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
+st.write('Research IT')
 #st.title('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
 
 with st.expander("About:"):
