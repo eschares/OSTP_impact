@@ -668,21 +668,21 @@ zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/ba
 
 st.write(zenodo + " " + github)
 
-html_string = "<p style=font-size:13px>v1.0, last modified 10/25/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v1.0, last modified 10/31/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(twitter)
 
-components.html(
-"""
-<a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/12810611/0/c7ce9654/1/"
-alt="Web Analytics"
-referrerPolicy="no-referrer-when-downgrade"></a>
-"""
-)
+# components.html(
+# """
+# <a title="Web Analytics"
+# href="https://statcounter.com/" target="_blank"><img
+# class="statcounter"
+# src="https://c.statcounter.com/12810611/0/c7ce9654/1/"
+# alt="Web Analytics"
+# referrerPolicy="no-referrer-when-downgrade"></a>
+# """
+# )
 
 html_string_statcounter = '''
 <!-- Default Statcounter code for OSTP Impact, Streamlit
