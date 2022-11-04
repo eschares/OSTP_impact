@@ -17,8 +17,8 @@ st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide') #, ini
 
 st.markdown('# Impact of the 2022 OSTP Memo:')
 st.header('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
-st.write('Research IT')
-#st.title('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
+#st.write('Research IT')
+
 
 with st.expander("About:"):
     st.write("""
@@ -31,8 +31,8 @@ with st.expander("About:"):
         
         Results show that an average of 265,000 articles are published each year that acknowledge U.S. federal funding agencies. These research outputs are further examined to look at patterns by publisher, journal title, institutions, and Open Access status.
         
-        This companion website shows interactive versions of the charts and graphs, both by absolute number and by percentage of total.
-
+        Each static graph from the journal article is reproduced here as an interactive version. Users can zoom, pan, and hover over data points for more detail.
+        
         Additionally, you may search for a particular publisher, journal title, or research institution and label it and color it red to make it easier to distinguish on the graphs.
 
         The dataset and code are available at the Github repo, [https://github.com/eschares/OSTP_impact](https://github.com/eschares/OSTP_impact).
@@ -41,7 +41,7 @@ with st.expander("About:"):
 
 st.markdown("""---""")
 st.header('Number')
-st.write('The number of U.S. federally funded publications per year in Dimensions are:')
+st.write('The number of U.S. federally funded publications per year, as defined in the database Dimensions, are:')
 
 d = {'Year': [2021, 2020, 2019, 2018, 2017],
     'Number': ['275,825', '277,407', '262,682', '259,518', '251,040']
@@ -667,23 +667,16 @@ github = "[![GitHub repo stars](https://img.shields.io/github/stars/eschares/ost
 twitter = "[![Twitter Follow](https://img.shields.io/twitter/follow/eschares?style=social)](<https://twitter.com/eschares>)"
 zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/badge/latestdoi/554219142)"
 
-st.write(zenodo + " " + github)
+mastodon = "[![Mastodon](https://img.shields.io/badge/Mastodon-%40eschares%40scholar.social-purple?logo=Mastodon&link=https://scholar.social/@eschares&link=https://scholar.social/@eschares)](https://img.shields.io/badge/Mastodon-%40eschares%40scholar.social-purple?logo=Mastodon&link=https://scholar.social/@eschares&link=https://scholar.social/@eschares)"
 
-html_string = "<p style=font-size:13px>v1.0, last modified 11/2/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+
+html_string = "<p style=font-size:13px>v1.0, last modified 11/4/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
+st.write(zenodo + " " + github)
+st.write(mastodon)
 st.write(twitter)
 
-# components.html(
-# """
-# <a title="Web Analytics"
-# href="https://statcounter.com/" target="_blank"><img
-# class="statcounter"
-# src="https://c.statcounter.com/12810611/0/c7ce9654/1/"
-# alt="Web Analytics"
-# referrerPolicy="no-referrer-when-downgrade"></a>
-# """
-# )
 
 html_string_statcounter = '''
 <!-- Default Statcounter code for OSTP Impact, Streamlit
