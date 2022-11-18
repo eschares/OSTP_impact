@@ -667,15 +667,15 @@ github = "[![GitHub repo stars](https://img.shields.io/github/stars/eschares/ost
 twitter = "[![Twitter Follow](https://img.shields.io/twitter/follow/eschares?style=social)](<https://twitter.com/eschares>)"
 zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/badge/latestdoi/554219142)"
 
-mastodon = "[![Mastodon](https://img.shields.io/badge/Mastodon-%40eschares%40scholar.social-purple?logo=Mastodon&link=https://scholar.social/@eschares&link=https://scholar.social/@eschares)](https://img.shields.io/badge/Mastodon-%40eschares%40scholar.social-purple?logo=Mastodon&link=https://scholar.social/@eschares&link=https://scholar.social/@eschares)"
+mastodon = "[![Mastodon Follow](https://img.shields.io/mastodon/follow/108216956438964080?domain=https://scholar.social&style=social)](<https://scholar.social/@eschares>)"
 
 
-html_string = "<p style=font-size:13px>v1.0, last modified 11/4/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v1.0, last modified 11/18/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(zenodo + " " + github)
-st.write(mastodon)
-st.write(twitter)
+st.write(mastodon + " " + twitter)
+#st.write(twitter)
 
 
 html_string_statcounter = '''
