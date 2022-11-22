@@ -664,13 +664,13 @@ st.plotly_chart(fig, use_container_width=False)
 ##### Footer in sidebar #####
 #st.subheader("About")
 github = "[![GitHub repo stars](https://img.shields.io/github/stars/eschares/ostp_impact?logo=github&style=social)](<https://github.com/eschares/ostp_impact>)"
-twitter = "[![Twitter Follow](https://img.shields.io/twitter/follow/eschares?style=social)](<https://twitter.com/eschares>)"
+twitter = "[![Twitter Follow](https://img.shields.io/twitter/url?label=Twitter%20%40eschares&style=social&url=https%3A%2F%2Ftwitter.com%2Feschares)](<https://twitter.com/eschares>)"
 zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/badge/latestdoi/554219142)"
 
 mastodon = "[![Mastodon Follow](https://img.shields.io/mastodon/follow/108216956438964080?domain=https://scholar.social&style=social)](<https://scholar.social/@eschares>)"
 
 
-html_string = "<p style=font-size:13px>v1.0, last modified 11/18/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v1.0, last modified 11/23/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(zenodo + " " + github)
