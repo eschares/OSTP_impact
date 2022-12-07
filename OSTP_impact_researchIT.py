@@ -17,6 +17,8 @@ st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide') #, ini
 
 st.markdown('# Impact of the 2022 OSTP Memo:')
 st.header('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
+st.markdown("""##### Companion website showing interactive versions of graphs from the study at [https://arxiv.org/abs/2210.14871](https://arxiv.org/abs/2210.14871).""")
+st.markdown("""###### by Eric Schares, Iowa State University,  [eschares@iastate.edu](mailto:eschares@iastate.edu)""")
 #st.write('Research IT')
 
 
@@ -27,15 +29,39 @@ with st.expander("About:"):
         
         The OSTP released a companion report with the memo, but it only provided a broad estimate of total numbers affected per year.
 
-        **Therefore, [this study](https://arxiv.org/abs/2210.14871) seeks to more deeply investigate the characteristics of U.S. federally funded research** over a 5-year period from 2017-2021 to better understand the impact of the updated guidance. It uses a manually created custom filter in the Dimensions database to return only publications that arise from U.S. federal funding.
+        **Therefore, [this study and website](https://arxiv.org/abs/2210.14871) seek to more deeply investigate the characteristics of U.S. federally funded research** over a 5-year period from 2017-2021 to better understand the impact of the updated guidance. It uses a manually created custom filter in the Dimensions database to return only publications that arise from U.S. federal funding.
         
-        Results show that an average of 265,000 articles are published each year that acknowledge U.S. federal funding agencies. These research outputs are further examined to look at patterns by publisher, journal title, institutions, and Open Access status.
+        **Results** show that an average of 265,000 articles are published each year that acknowledge U.S. federal funding agencies. These research outputs are further examined to look at patterns by publisher, journal title, institutions, and Open Access status.
         
-        Each static graph from the journal article is reproduced here as an interactive version. Users can zoom, pan, and hover over data points for more detail.
-        
-        Additionally, you may search for a particular publisher, journal title, or research institution and label it and color it red to make it easier to distinguish on the graphs.
+    """)
 
-        The dataset and code are available at the Github repo, [https://github.com/eschares/OSTP_impact](https://github.com/eschares/OSTP_impact).
+with st.expander("How to use:"):
+    st.write("""
+        Each static graph from the journal article at [https://arxiv.org/abs/2210.14871](https://arxiv.org/abs/2210.14871) is included here as an interactive version.
+        
+    Users can zoom, pan, and hover over data points for more detail. Double-clicking the graph will reset the axes and zoom back out. Choose to display the y-axis in linear or log scale.
+        
+    Additionally, you may search for a particular publisher, journal title, or research institution to label and color it red to make it easier to find on the graphs.
+
+    **Publishers**
+    - Absolute Numbers
+    - Percentage of U.S. Federally Funded research
+
+    **Journal titles**
+    - Absolute Numbers
+    - Percentage of U.S. Federally Funded research
+
+    **Research Institutions**
+    - Absolute Numbers
+    - Percentage of U.S. Federally Funded research
+
+    **Open Access Status**
+    - U.S. Federally Funded
+    - Overall publications
+    - By Publisher
+    - By Journal title
+    
+    The datasets and code are available at the Github repo, [https://github.com/eschares/OSTP_impact](https://github.com/eschares/OSTP_impact). 
     """)
 
 
@@ -68,8 +94,9 @@ if st.checkbox('Show raw publisher data'):
     st.write(publishers_df)
 
 
-st.write('Label a Publisher and turn it red on the charts:')
-selected_publishers = st.multiselect('Publisher Name:', pd.Series(publishers_df['Name'].reset_index(drop=True)), help='Displayed in order provided by the underlying datafile')
+#st.write('Label a Publisher and turn it red on the charts:')
+selected_publishers = st.multiselect('Label a Publisher and turn it red on the charts:', pd.Series(
+    publishers_df['Name'].reset_index(drop=True)), help='Displayed in order provided by the underlying datafile')
 
 if st.button('Find that Publisher'):
     for publisher_name in selected_publishers:
@@ -87,54 +114,106 @@ for name in st.session_state.publishers_to_change:
 
 ### Publishers ###
 st.subheader('By absolute number')
-fig = px.scatter(publishers_df, x='Worldwide',y='FF Pubs', color='color',
-                color_discrete_sequence=['blue', 'red'],
-                log_x='True', 
-                hover_name='Name', 
-                hover_data={'color':False},
-                trendline='ols',
-                trendline_scope='overall',
-                trendline_color_override='blue',
-                #text='Name'
-                )
+
+publishers_logy = st.radio(
+    'Display the y-axis as:', ('Linear', 'Log'))
+
+if publishers_logy == 'Linear':
+    fig = px.scatter(publishers_df, x='Worldwide',y='FF Pubs', color='color',
+                    color_discrete_sequence=['blue', 'red'],
+                    log_x='True', 
+                    hover_name='Name', 
+                    hover_data={'color':False},
+                    trendline='ols',
+                    trendline_scope='overall',
+                    trendline_color_override='blue',
+                    #text='Name'
+                    )
+
+    publishers_df2 = publishers_df[ (publishers_df['FF Pubs'] > 29180) | (publishers_df['Worldwide']>427000) | publishers_df['Name'].isin(selected_publishers)]
+    num_rows = publishers_df2.shape[0]
+    for i in range(num_rows):
+        fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
+                        y=publishers_df2["FF Pubs"].iloc[i],
+                        text = publishers_df2["Name"].iloc[i],
+                        showarrow = False,
+                            ax = 0,
+                            yshift = 10
+                            #ay = -10
+                        )
+
+    fig.add_annotation(x=4.593, y=23500,
+                text="American Geophysical Union",
+                showarrow=False,
+                arrowhead=0)
+
+    fig.add_annotation(x=4.39, y=14000,
+                text="American Astronomical Society",
+                showarrow=True,
+                arrowhead=0,
+                ax = -30,
+                ay = -30)
+
+    fig.update_layout(yaxis_title='Number of U.S. Federally Funded publications 2017-2021')
+
+
+else:
+    fig = px.scatter(publishers_df, x='Worldwide', y='FF Pubs', color='color',
+                 color_discrete_sequence=['blue', 'red'],
+                 log_x='True',
+                 log_y='True',
+                 hover_name='Name',
+                 hover_data={'color': False},
+                 trendline='ols',
+                 trendline_scope='overall',
+                 trendline_color_override='blue',
+                 #text='Name'
+                 )
+
+    publishers_df2 = publishers_df[(publishers_df['FF Pubs'] > 29180) | (publishers_df['Worldwide'] > 427000) | publishers_df['Name'].isin(selected_publishers)]
+    num_rows = publishers_df2.shape[0]
+    for i in range(num_rows):
+            fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
+                            y=np.log10(publishers_df2["FF Pubs"]).iloc[i],
+                            text=publishers_df2["Name"].iloc[i],
+                            showarrow=False,
+                            ax=0,
+                            yshift=10
+                            #ay = -10
+                            )
+
+    fig.add_annotation(x=4.593, y=4.22,
+                    text="American Geophysical Union",
+                    showarrow=False,
+                    yshift=10,
+                    arrowhead=0)
+
+    fig.add_annotation(x=4.39, y=4.1455,
+                    text="American Astronomical Society",
+                    showarrow=True,
+                    arrowhead=0,
+                    ax=-30,
+                    ay=-30)
+
+    fig.update_layout(yaxis_title='Number of U.S. Federally Funded publications 2017-2021 [log]')
+
 
 fig.update_traces(textposition='top center')
 
 fig.update_layout(
     height=800, width=1200,
     title_text='Publishers Total vs. U.S. Federally Funded Publications, 2017-2021',
-    xaxis_title = 'Total number of publications worldwide 2017-2021 [log]',
-    yaxis_title = 'Number of U.S. Federally Funded publications 2017-2021',
-    showlegend = False
+    xaxis_title='Total number of publications worldwide 2017-2021 [log]',
+    #yaxis_title='Number of U.S. Federally Funded publications 2017-2021 [log]',
+    showlegend=False
 )
 
-publishers_df2 = publishers_df[ (publishers_df['FF Pubs'] > 29180) | (publishers_df['Worldwide']>427000) | publishers_df['Name'].isin(selected_publishers)]
-num_rows = publishers_df2.shape[0]
-for i in range(num_rows):
-    fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
-                    y=publishers_df2["FF Pubs"].iloc[i],
-                    text = publishers_df2["Name"].iloc[i],
-                    showarrow = False,
-                        ax = 0,
-                        yshift = 10
-                        #ay = -10
-                    )
-
-fig.add_annotation(x=4.593, y=23500,
-            text="American Geophysical Union",
-            showarrow=False,
-            arrowhead=0)
-
-fig.add_annotation(x=4.39, y=14000,
-            text="American Astronomical Society",
-            showarrow=True,
-            arrowhead=0,
-            ax = -30,
-            ay = -30)
-
-
 st.plotly_chart(fig, use_container_width=True)
-st.write('R^2 is',px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
+st.write('R^2 is', px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
+
+
+
+
 
 
 
@@ -670,7 +749,7 @@ zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/ba
 mastodon = "[![Mastodon Follow](https://img.shields.io/mastodon/follow/108216956438964080?domain=https://scholar.social&style=social)](<https://scholar.social/@eschares>)"
 
 
-html_string = "<p style=font-size:13px>v1.0, last modified 11/23/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v1.1, last modified 12/7/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(zenodo + " " + github)
