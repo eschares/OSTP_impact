@@ -382,7 +382,7 @@ fig.update_layout(
     showlegend = False
 )
 
-jnl_df2 = jnl_df[ (jnl_df['Worldwide'] > 55000) | (jnl_df['Percentage']>65) | ((jnl_df['Percentage']>40) & (jnl_df['Percentage']<44)) | jnl_df['Name'].isin(selected_journals)]
+jnl_df2 = jnl_df[ (jnl_df['Worldwide'] > 55000) | (jnl_df['Percentage']>65) | jnl_df['Name'].isin(selected_journals)]
 num_rows = jnl_df2.shape[0]
 for i in range(num_rows):
     fig.add_annotation(x=jnl_df2['Worldwide'].iloc[i],
