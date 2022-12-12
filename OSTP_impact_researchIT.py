@@ -321,9 +321,6 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-
-
-
 st.markdown("""---""")
 ### Journals section ###
 st.header('Journal Titles')
@@ -444,72 +441,104 @@ st.write('R^2 is',px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
 st.subheader('Percentage')
 
 fig = px.scatter(jnl_df[jnl_df['Worldwide']!=0], x='Worldwide',y='Percentage', color='color',
-                 log_x=False,
+                 log_x=True,
                  hover_name='Name', 
                  hover_data={'color':False},
                 )
 
-fig.update_traces(textposition='top center')
+fig.update_traces(textposition='top right')
 
 fig.update_layout(
     height=700, width=1200,
     title_text='Journal Titles: Total vs. Percentage U.S. Federally Funded Publications, 2017-2021',
     xaxis_title = 'Number of total publications worldwide 2017-2021 [log]',
     yaxis_title = 'Percentage FF, 2017-2021',
-    showlegend = False
+    showlegend = False,
+    font_size = 14
 )
 
-jnl_df2 = jnl_df[ (jnl_df['Worldwide'] > 55000) | (jnl_df['Percentage']>65) | jnl_df['Name'].isin(selected_journals)]
+jnl_df2 = jnl_df[ (jnl_df['Worldwide'] > 55000) |
+                  (jnl_df['Percentage']>70) | 
+                  jnl_df['Name'].isin(selected_journals)]
 num_rows = jnl_df2.shape[0]
 for i in range(num_rows):
-    fig.add_annotation(x=jnl_df2['Worldwide'].iloc[i],
+    fig.add_annotation(x=np.log10(jnl_df2['Worldwide']).iloc[i],
                        y=jnl_df2["Percentage"].iloc[i],
                        text = jnl_df2["Name"].iloc[i],
                        showarrow = False,
-                        ax = 5,
-                        yshift = 12
-                        #ay = -12
+                       ax = 5,
+                       yshift = 12
+                       #ay = -12
                       )
 
-fig.add_annotation(x=20344, y=53.3,
-            text="PNAS",
-            showarrow=False,
-            arrowhead=0,)
+fig.add_annotation(x=4.308, y=52.3,
+                   text="PNAS",
+                   ay=-18)
+#showarrow=False,
+#arrowhead=0,)
 
-fig.add_annotation(x=8728, y=53,
-            text="eLife",
-            showarrow=True,
-            arrowhead=0,
-                  ax=30,
-                  ay=5)
+fig.add_annotation(x=3.94, y=53,
+                   text="eLife",
+                   #showarrow=True,
+                   #arrowhead=0,
+                   ax=30,
+                   ay=-10)
 
-fig.add_annotation(x=6463, y=52.4,
-            text="Cell Reports",
-            showarrow=True,
-            arrowhead=0,
-                  ax=-50,
-                  ay=5)
+fig.add_annotation(x=3.81, y=52.4,
+                   text="Cell Reports",
+                   #showarrow=True,
+                   #arrowhead=0,
+                   ax=-5,
+                   ay=-25)
 
-fig.add_annotation(x=4447, y=50.3,
-            text="Jnl of Neuroscience",
-            showarrow=True,
-            arrowhead=0,
-                  ax=-50,
-                  ay=15)
+fig.add_annotation(x=3.648, y=50.3,
+                   text="Jnl of Neuroscience",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=0,
+                   ay=-20)
 
-fig.add_annotation(x=8384, y=48.5,
-            text="Jnl of Biological Chemistry",
-            showarrow=True,
-            arrowhead=0,
-                  ax=100,
-                  ay=0)
+fig.add_annotation(x=3.92, y=48.5,
+                   text="Jnl of Biological Chemistry",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=100,
+                   ay=0)
 
-fig.add_annotation(x=7077, y=47.63,
-            text="Science Advances",
-            showarrow=True,
-            arrowhead=0,
-                  ax=-35,
-                  ay=12)
+fig.add_annotation(x=3.85, y=47.63,
+                   text="Science Advances",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=0,
+                   ay=20)
+
+fig.add_annotation(x=4.473, y=40.4,
+                   text="Nature Communications",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=0,
+                   ay=-18)
+
+fig.add_annotation(x=4.187, y=57.9,
+                   text="The Astrophysical Journal",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=0,
+                   ay=-18)
+
+fig.add_annotation(x=4.11, y=43.3,
+                   text="Jnl ACS",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=0,
+                   ay=-10)
+
+fig.add_annotation(x=4.42, y=27.06,
+                   text="Physical Review B",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=30,
+                   ay=-10)
 
 
 st.plotly_chart(fig, use_container_width=True)
@@ -524,6 +553,7 @@ st.markdown("""---""")
 st.header('Research Institutions')
 
 institution_df = pd.read_csv('ResOrgs.csv', header=1, encoding='latin1')
+institution_df = institution_df[institution_df['AllUS']!=0]
 if st.checkbox('Show raw institution data'):
     st.subheader('Raw data')
     st.write(institution_df)
@@ -551,38 +581,90 @@ for name in st.session_state.resorgs_to_change:
 
 st.subheader('Absolute Number')
 
-fig = px.scatter(institution_df, x='AllUS',y='FF Pubs', color='color',
-                 #symbol='Name',
-                 log_x='True', 
-                 hover_name='Name', 
-                 hover_data={'color':False},
-                 trendline='ols',
-                 trendline_scope='overall',
-                 trendline_color_override='blue',
-                 #text='Name'
-                )
+institution_logy = st.radio(
+    'Display the y-axis as:', ('Institution Log', 'Institution Linear')
+)
+
+if institution_logy == 'Institution Linear':
+    fig = px.scatter(institution_df, x='AllUS',y='FF Pubs', color='color',
+                    #symbol='Name',
+                    log_x='True', 
+                    hover_name='Name', 
+                    hover_data={'color':False},
+                    trendline='ols',
+                    trendline_scope='overall',
+                    trendline_color_override='blue',
+                    #text='Name'
+                    )
+
+    inst_df2 = institution_df[ (institution_df['FF Pubs'] > 90000) | 
+                               (institution_df['AllUS']>520000) | 
+                               (institution_df['Name'].str.contains('Lawrence Berk|Oak Ridge Nat|Argonne|Iowa State|Harvard University|Ann Arbor|University of Washington')) | 
+                               (institution_df['Name'].isin(selected_resorgs)) ]
+    num_rows = inst_df2.shape[0]
+    for i in range(num_rows):
+        fig.add_annotation(x=np.log10(inst_df2['AllUS']).iloc[i],
+                           y=inst_df2["FF Pubs"].iloc[i],
+                           text = inst_df2["Name"].iloc[i],
+                           # showarrow = True,
+                            ax = -80,
+                            ay = -12
+                          )
+    
+    fig.update_layout(yaxis_title='Number of U.S. Federally Funded publications 2017-2021')
+
+else: # log(y)
+    fig = px.scatter(institution_df, x='AllUS', y='FF Pubs', color='color',
+                     #symbol='Name',
+                     log_x='True',
+                     log_y='True',
+                     hover_name='Name',
+                     hover_data={'color': False},
+                     trendline='ols',
+                     trendline_scope='overall',
+                     trendline_color_override='blue',
+                     )
+
+    inst_df2 = institution_df[(institution_df['FF Pubs'] > 90000) |
+                              (institution_df['AllUS'] > 520000) |
+                              (institution_df['Name'].str.contains('Lawrene Berk|Oak Ridge Nat|Argonne|Iowa State|Harvard University')) |
+                              (institution_df['Name'].isin(selected_resorgs))]
+    num_rows = inst_df2.shape[0]
+    for i in range(num_rows):
+        fig.add_annotation(x=np.log10(inst_df2['AllUS']).iloc[i],
+                           y=np.log10(inst_df2["FF Pubs"]).iloc[i],
+                           text=inst_df2["Name"].iloc[i],
+                           # showarrow = True,
+                           ax=-80,
+                           ay=-12
+                           )
+
+        fig.add_annotation(x=4.905, y=4.579,
+                           text="University of Michigan - Ann Arbor",
+                           ax=-20,
+                           ay=-20)
+        fig.add_annotation(x=4.86, y=4.54,
+                        text="University of Washington",
+                        ax=-120,
+                        ay=-10)
+        fig.add_annotation(x=4.236, y=4.13,
+                        text="Lawrence Berkeley Nat Lab",
+                        ax=-120,
+                        ay=-30)      
+
+    fig.update_layout(yaxis_title='Number of U.S. Federally Funded publications 2017-2021 [log]',)
+
 
 fig.update_traces(textposition='top center')
 
 fig.update_layout(
     height=700, width=1200,
     title_text='Research Institutions: Total vs. U.S. Federally Funded Publications, 2017-2021',
-    xaxis_title = 'Total number of publications worldwide 2017-2021 [log]',
-    yaxis_title = 'Number of U.S. Federally Funded publications 2017-2021',
-    showlegend = False
+    xaxis_title='Total number of publications worldwide 2017-2021 [log]',
+    #yaxis_title='Number of U.S. Federally Funded publications 2017-2021',
+    showlegend=False,
+    font_size = 14
 )
-
-
-inst_df2 = institution_df[ (institution_df['FF Pubs'] > 30000) | (institution_df['AllUS']>65000) | (institution_df['Name'].str.contains('Lawrence Berk|Ridge National|Argonne|Iowa State')) | institution_df['Name'].isin(selected_resorgs) ]
-num_rows = inst_df2.shape[0]
-for i in range(num_rows):
-    fig.add_annotation(x=np.log10(inst_df2['AllUS']).iloc[i],
-                       y=inst_df2["FF Pubs"].iloc[i],
-                       text = inst_df2["Name"].iloc[i],
-                       # showarrow = True,
-                        ax = -80,
-                        ay = -12
-                      )
 
 st.plotly_chart(fig, use_container_width=True)
 st.write('R^2 is',px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
@@ -590,13 +672,15 @@ st.write('R^2 is',px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
 
 
 
+
+
 st.subheader('Percentage')
 
-fig = px.scatter(institution_df[institution_df['AllUS']!=0], x='AllUS',y='Percentage', color='color',
+fig = px.scatter(institution_df, x='AllUS',y='Percentage', color='color',
                  #symbol='Name', 
                  hover_name='Name', 
                  hover_data={'color':False},
-                 log_x=False,
+                 log_x=True,
                  #text='Name'
                 )
 
@@ -605,15 +689,19 @@ fig.update_traces(textposition='top right')
 fig.update_layout(
     height=700, width=1200,
     title_text='Research Institutions: Total vs. Percentage U.S. Federally Funded Publications, 2017-2021',
-    xaxis_title = 'Number of Total publications 2017-2021',
+    xaxis_title = 'Number of Total publications 2017-2021 [log]',
     yaxis_title = "Percentage FF, 2017-2021",
-    showlegend = False
+    showlegend = False,
+    font_size = 14
 )
 
-inst_df2 = institution_df[ (institution_df['AllUS'] > 80000) | (institution_df['Percentage']>99) | (institution_df['Name'].str.contains('Iowa State|Larence Berk|Ridge Natioal|Argone')) | institution_df['Name'].isin(selected_resorgs)]
+inst_df2 = institution_df[ (institution_df['AllUS'] > 80000) | 
+                           (institution_df['Percentage']>99) | 
+                           (institution_df['Name'].str.contains('Iowa State|Larence Berk|Ridge Natioal|Argone')) | 
+                           institution_df['Name'].isin(selected_resorgs)]
 num_rows = inst_df2.shape[0]
 for i in range(num_rows):
-    fig.add_annotation(x=inst_df2['AllUS'].iloc[i],
+    fig.add_annotation(x=np.log10(inst_df2['AllUS']).iloc[i],
                        y=inst_df2["Percentage"].iloc[i],
                        text = inst_df2["Name"].iloc[i],
                        #showarrow = True,
@@ -622,12 +710,12 @@ for i in range(num_rows):
                       )
 
 fig.add_shape(type="rect",
-    x0=0, y0=76, x1=21500, y1=92,
+    x0=1300, y0=73.5, x1=19500, y1=90,
     line=dict(color="RoyalBlue"),
     #layer="below",
 )
 
-fig.add_annotation(x=24500, y=87,
+fig.add_annotation(x=4.3, y=87,
             text="National Laboratories",
             showarrow=False,
             arrowhead=0,)
@@ -660,7 +748,8 @@ fig.update_layout(
     xaxis_title = 'Year',
     yaxis_title = 'Percentage FF Publications by OA Mode',
     legend_traceorder="reversed",
-    legend_title_text='OA Type'
+    legend_title_text='OA Type',
+    font_size = 14
 )
 
 st.plotly_chart(fig, use_container_width=False)
@@ -685,7 +774,8 @@ fig.update_layout(
     xaxis_title = 'Year',
     yaxis_title = 'Percentage All Publications by OA Mode',
     legend_traceorder="reversed",
-    legend_title_text='OA Type'
+    legend_title_text='OA Type',
+    font_size = 14
 )
 
 st.plotly_chart(fig, use_container_width=False)
@@ -729,7 +819,8 @@ fig.update_layout(
     xaxis_title = 'Publisher',
     yaxis_title = 'Percentage FF Publications by OA Mode',
     legend_traceorder="reversed",
-    legend_title_text='OA Type'
+    legend_title_text='OA Type',
+    font_size = 14
 )
 
 st.plotly_chart(fig, use_container_width=False)
@@ -747,7 +838,8 @@ fig.update_layout(
     xaxis_title = 'Publisher',
     yaxis_title = 'Percentage FF Publications by OA Mode',
     legend_traceorder="reversed",
-    legend_title_text='OA Type'
+    legend_title_text='OA Type',
+    font_size = 14
 )
 
 st.plotly_chart(fig, use_container_width=False)
@@ -792,7 +884,8 @@ fig.update_layout(
     xaxis_title = 'Journal Title',
     yaxis_title = 'Percentage FF Publications by OA Mode',
     legend_traceorder="reversed",
-    legend_title_text='OA Type'
+    legend_title_text='OA Type',
+    font_size=14
 )
 
 st.plotly_chart(fig, use_container_width=False)
@@ -810,7 +903,8 @@ fig.update_layout(
     xaxis_title = 'Journal Title',
     yaxis_title = 'Percentage FF Publications by OA Mode',
     legend_traceorder="reversed",
-    legend_title_text='OA Type'
+    legend_title_text='OA Type',
+    font_size=14
 )
 
 st.plotly_chart(fig, use_container_width=False)
