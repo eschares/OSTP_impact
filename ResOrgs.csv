@@ -1,7 +1,7 @@
 "About the data: Analytical views - Research Organization - Exported on Oct 19, 2022. Criteria: My groups is US YES federal funders; Publication Year is 2017 or 2018 or 2019 or 2020 or 2021; Country of Funder is United States; Country/Territory is United States; Publication Type is not Preprint.  1,218,013",,,,,,,,,,,,,,,,,,,,,,,
 ID,Name,Country,Rank FF,FF Pubs,Rank allUS,AllUS,rank percent,Percentage,All OA,Bronze,Closed,Gold,Green,Hybrid,sum,delta,% OSTP closed,Rank % closed,% OSTP Green,% OSTP Gold,% OSTP Bronze,% OSTP Hybrid,color
 grid.38142.3c,Harvard University,United States,1,59896,1,140890,233,42.51259848,51688,10936,8208,15467,19960,5325,59896,0,13.70375317,151,33.32442901,25.82309336,18.25831441,8.890410044,blue
-grid.214458.e,University of Michigan–Ann Arbor,United States,2,37941,2,80287,154,47.25671653,30237,6483,7704,7505,12913,3336,37941,0,20.30521072,93,34.03442187,19.78071216,17.08705622,8.792599035,blue
+grid.214458.e,University of Michigan - Ann Arbor,United States,2,37941,2,80287,154,47.25671653,30237,6483,7704,7505,12913,3336,37941,0,20.30521072,93,34.03442187,19.78071216,17.08705622,8.792599035,blue
 grid.21107.35,Johns Hopkins University,United States,3,35801,3,77718,166,46.06526159,30080,5903,5721,8720,12463,2994,35801,0,15.98000056,125,34.81187676,24.35686154,16.48836625,8.362894891,blue
 grid.34477.33,University of Washington,United States,4,34664,5,72541,144,47.78539033,28086,6013,6578,8068,10725,3280,34664,0,18.97645973,101,30.93987999,23.2748673,17.34652666,9.462266328,blue
 grid.168010.e,Stanford University,United States,5,32493,4,75672,225,42.93926419,26467,5682,6026,6986,10453,3346,32493,0,18.54553288,104,32.17000585,21.50001539,17.48684332,10.29760256,blue
