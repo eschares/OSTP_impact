@@ -86,9 +86,12 @@ if 'resorgs_to_change' not in st.session_state:
     st.session_state.resorgs_to_change = []
 
 
+#### Start Publishers section ###
+
 st.markdown("""---""")
 st.header('Publishers')
 publishers_df = pd.read_csv('Publishers.csv', header=1)
+publishers_df = publishers_df[publishers_df['Worldwide']!=0]
 if st.checkbox('Show raw publisher data'):
     st.subheader('Raw data')
     st.write(publishers_df)
@@ -112,13 +115,13 @@ for name in st.session_state.publishers_to_change:
     publishers_df.loc[title_filter, 'color'] = 'red'
 
 
-### Publishers ###
+### Publisher graph ###
 st.subheader('By absolute number')
 
 publishers_logy = st.radio(
-    'Display the y-axis as:', ('Linear', 'Log'))
+    'Display the y-axis as:', ('Publishers Log', 'Publishers Linear'))
 
-if publishers_logy == 'Linear':
+if publishers_logy == 'Publishers Linear':
     fig = px.scatter(publishers_df, x='Worldwide',y='FF Pubs', color='color',
                     color_discrete_sequence=['blue', 'red'],
                     log_x='True', 
@@ -130,22 +133,27 @@ if publishers_logy == 'Linear':
                     #text='Name'
                     )
 
-    publishers_df2 = publishers_df[ (publishers_df['FF Pubs'] > 29180) | (publishers_df['Worldwide']>427000) | publishers_df['Name'].isin(selected_publishers)]
+    publishers_df2 = publishers_df[ (publishers_df['FF Pubs'] > 88000) | 
+                                    (publishers_df['Worldwide'] > 1000000) |
+                                    (publishers_df['Name'].str.contains('American Chemical Society|Oxford|American Physical Society|De Gruyter|eLife')) |
+                                    (publishers_df['Name'].isin(selected_publishers))
+                                    ]
     num_rows = publishers_df2.shape[0]
     for i in range(num_rows):
         fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
                         y=publishers_df2["FF Pubs"].iloc[i],
                         text = publishers_df2["Name"].iloc[i],
                         showarrow = False,
-                            ax = 0,
-                            yshift = 10
-                            #ay = -10
+                        ax = 0,
+                        yshift = 10
+                        #ay = -10
                         )
 
     fig.add_annotation(x=4.593, y=23500,
                 text="American Geophysical Union",
                 showarrow=False,
-                arrowhead=0)
+                arrowhead=0
+                )
 
     fig.add_annotation(x=4.39, y=14000,
                 text="American Astronomical Society",
@@ -156,8 +164,7 @@ if publishers_logy == 'Linear':
 
     fig.update_layout(yaxis_title='Number of U.S. Federally Funded publications 2017-2021')
 
-
-else:
+else:   # log(y)
     fig = px.scatter(publishers_df, x='Worldwide', y='FF Pubs', color='color',
                  color_discrete_sequence=['blue', 'red'],
                  log_x='True',
@@ -170,31 +177,51 @@ else:
                  #text='Name'
                  )
 
-    publishers_df2 = publishers_df[(publishers_df['FF Pubs'] > 29180) | (publishers_df['Worldwide'] > 427000) | publishers_df['Name'].isin(selected_publishers)]
+    publishers_df2 = publishers_df[ (publishers_df['FF Pubs'] > 88000) |
+                                    (publishers_df['Worldwide'] > 1000000) |
+                                    #(publishers_df['Name'].str.contains('American Chemical Society|Oxford|American Physical Society|De Gruyter|eLife')) |
+                                    (publishers_df['Name'].isin(selected_publishers))
+                                    ]
     num_rows = publishers_df2.shape[0]
     for i in range(num_rows):
             fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
                             y=np.log10(publishers_df2["FF Pubs"]).iloc[i],
                             text=publishers_df2["Name"].iloc[i],
-                            showarrow=False,
                             ax=0,
-                            yshift=10
-                            #ay = -10
+                            ay = -10
                             )
 
     fig.add_annotation(x=4.593, y=4.22,
                     text="American Geophysical Union",
-                    showarrow=False,
-                    yshift=10,
+                    ay=-10,
                     arrowhead=0)
 
     fig.add_annotation(x=4.39, y=4.1455,
                     text="American Astronomical Society",
                     showarrow=True,
-                    arrowhead=0,
-                    ax=-30,
-                    ay=-30)
+                    ax=-150,
+                    ay=-10)
 
+    fig.add_annotation(x=5.475, y=4.79,
+                   text="ACS",
+                   ay=-10)
+
+    fig.add_annotation(x=5.769, y=4.7,
+                   text="OUP",
+                   ay=-10)
+
+    fig.add_annotation(x=5.022, y=4.465,
+                   text="APS",
+                   ay=-10)
+
+    fig.add_annotation(x=5.63, y=3.178,
+                   text="De Gruyter",
+                   ay=-10)
+
+    fig.add_annotation(x=3.94, y=3.665,
+                   text="eLife",
+                   ay=-10)
+                 
     fig.update_layout(yaxis_title='Number of U.S. Federally Funded publications 2017-2021 [log]')
 
 
@@ -205,15 +232,12 @@ fig.update_layout(
     title_text='Publishers Total vs. U.S. Federally Funded Publications, 2017-2021',
     xaxis_title='Total number of publications worldwide 2017-2021 [log]',
     #yaxis_title='Number of U.S. Federally Funded publications 2017-2021 [log]',
-    showlegend=False
+    showlegend=False,
+    font_size=14
 )
 
 st.plotly_chart(fig, use_container_width=True)
 st.write('R^2 is', px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
-
-
-
-
 
 
 
@@ -227,7 +251,6 @@ fig = px.scatter(publishers_df, x='Worldwide',y='percentage', color='color',
                 log_x='True',
                 )
 
-
 fig.update_traces(textposition='top center')
 
 fig.update_layout(
@@ -235,10 +258,14 @@ fig.update_layout(
     title_text='Publishers Total Publications vs. Percentage U.S. Federally Funded',
     xaxis_title = 'Total number of Publications 2017-2021 [log]',
     yaxis_title = "Percentage of Publications that are FF, 2017-2021",
-    showlegend = False
+    showlegend = False,
+    font_size = 14
 )
 
-publishers_df2 = publishers_df[ (publishers_df['percentage'] > 51) | (publishers_df['Worldwide']>200000) | publishers_df['Name'].isin(selected_publishers)]
+publishers_df2 = publishers_df[ (publishers_df['percentage'] > 60) | 
+                                (publishers_df['Worldwide']>588000) | 
+                                publishers_df['Name'].isin(selected_publishers)
+                                ]
 num_rows = publishers_df2.shape[0]
 for i in range(num_rows):
     fig.add_annotation(x=np.log10(publishers_df2['Worldwide']).iloc[i],
@@ -250,35 +277,42 @@ for i in range(num_rows):
                         #ay = -10
                     )
 
-fig.add_annotation(x=3.576, y=52.5,
-            text="Am. Assn of Immunologists",
-            showarrow=False,
-            arrowhead=0)
+fig.add_annotation(x=4.39, y=57,
+                   text="Am. Astronomical Society",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=-20,
+                   ay=-18)
 
-
-fig.add_annotation(x=3.785, y=50,
-            text="Soc. for Neuroscience",
-            showarrow=True,
-            arrowhead=0,
-                ax=30,
-                ay=18)
-
-fig.add_annotation(x=4.593, y=44.7,
-            text="Am. Geophysical Union (AGU)",
-            showarrow=False,
-            arrowhead=0)
+fig.add_annotation(x=4.593, y=42.7,
+                   text="Am. Geophysical Union (AGU)",
+                   showarrow=True,
+                   ax=20,
+                   arrowhead=0)
 
 fig.add_annotation(x=4.096, y=44.8,
-            text="Am. Physciological Soc.",
-            showarrow=True,
-            arrowhead=0,
-                ax=30,ay=16)
+                   text="Am. Physciological Soc.",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=-30, ay=16)
 
 fig.add_annotation(x=5.02, y=27.7,
-            text="Am. Physical Soc.",
-            showarrow=True,
-            arrowhead=0,
-                ax=30,ay=-16)
+                   text="Am. Physical Soc.",
+                   showarrow=True,
+                   arrowhead=0,
+                   ax=0, ay=-16)
+
+fig.add_annotation(x=5.475, y=20.7,
+                   text="ACS",
+                   #showarrow=True,
+                   #arrowhead=0,
+                   ax=30, ay=-16)
+
+fig.add_annotation(x=3.94, y=53,
+                   text="eLife",
+                   #showarrow=True,
+                   #arrowhead=0,
+                   ax=0, ay=-10)
 
 
 st.plotly_chart(fig, use_container_width=True)
@@ -291,15 +325,13 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 st.markdown("""---""")
-### Journals ###
+### Journals section ###
 st.header('Journal Titles')
 
 jnl_df = pd.read_csv('Journal_titles.csv', header=1)
 if st.checkbox('Show raw journal data'):
     st.subheader('Raw data')
     st.write(jnl_df)
-
-
 
 st.write('Label a Journal and turn it red on the charts:')
 selected_journals = st.multiselect('Journal Name:', pd.Series(jnl_df['Name'].reset_index(drop=True)), help='Displayed in order provided by the underlying datafile')
@@ -318,50 +350,95 @@ for name in st.session_state.jnls_to_change:
     jnl_df.loc[title_filter, 'color'] = 'red'
 
 
-
 st.subheader('Absolute Number')
 
-fig = px.scatter(jnl_df, x='Worldwide',y='FF Pubs', color='color',
-                 log_x='True', 
-                 hover_name='Name', 
-                 hover_data={'color':False},
-                 trendline='ols',
-                 trendline_scope='overall',
-                 trendline_color_override='blue',
-                )
+journals_logy = st.radio(
+    'Display the y-axis as:', ('Journals Log', 'Journals Linear'))
+
+if journals_logy == 'Journals Linear':
+    fig = px.scatter(jnl_df, x='Worldwide',y='FF Pubs', color='color',
+                    log_x='True', 
+                    hover_name='Name', 
+                    hover_data={'color':False},
+                    trendline='ols',
+                    trendline_scope='overall',
+                    trendline_color_override='blue',
+                    )
+
+    jnl_df2 = jnl_df[ (jnl_df['FF Pubs'] > 8000) | 
+                      (jnl_df['Worldwide']>52000) | 
+                      (jnl_df['Name'].str.contains('Physical Review B|Chemical Society')) | 
+                      jnl_df['Name'].isin(selected_journals) ]
+    num_rows = jnl_df2.shape[0]
+    for i in range(num_rows):
+        fig.add_annotation(x=np.log10(jnl_df2['Worldwide']).iloc[i],
+                        y=jnl_df2["FF Pubs"].iloc[i],
+                        text = jnl_df2["Name"].iloc[i],
+                        showarrow = False,
+                        ax = 0,
+                        yshift = 12
+                        )
+
+        fig.add_annotation(x=3.941, y=4625,
+                   text="eLife",
+                   ay=-10)
+        
+    fig.update_layout(yaxis_title='Number of U.S. Federally Funded publications 2017-2021')
+
+else: # log(y)
+    fig = px.scatter(jnl_df, x='Worldwide', y='FF Pubs', color='color',
+                     log_x='True',
+                     log_y='True',
+                     hover_name='Name',
+                     hover_data={'color': False},
+                     trendline='ols',
+                     trendline_scope='overall',
+                     trendline_color_override='blue',
+                     )
+    jnl_df2 = jnl_df[(jnl_df['FF Pubs'] > 8000) |
+                     (jnl_df['Worldwide'] > 52000) |
+                     (jnl_df['Name'].str.contains('XYZ')) |
+                     jnl_df['Name'].isin(selected_journals)]
+    num_rows = jnl_df2.shape[0]
+    for i in range(num_rows):
+        fig.add_annotation(x=np.log10(jnl_df2['Worldwide']).iloc[i],
+                           y=np.log10(jnl_df2["FF Pubs"]).iloc[i],
+                           text=jnl_df2["Name"].iloc[i],
+                           showarrow=False,
+                           ax=0,
+                           yshift=12
+                           )
+
+    fig.add_annotation(x=4.415, y=3.847,
+                       text="Physical Review B",
+                       ay=-8)
+
+    fig.add_annotation(x=4.11, y=3.747,
+                   text="Jnl of Am. Chem. Soc.",
+                   ay=-10)
+
+    fig.add_annotation(x=3.941, y=3.665,
+                   text="eLife",
+                   ay=-10)
+
+    fig.update_layout(
+        yaxis_title='Number of U.S. Federally Funded publications 2017-2021 [log]')
 
 fig.update_traces(textposition='top center')
 
 fig.update_layout(
     height=700, width=1200,
     title_text='Journal Titles: Total vs. U.S. Federally Funded Publications, 2017-2021',
-    xaxis_title = 'Total number of publications worldwide 2017-2021 [log]',
-    yaxis_title = 'Number of U.S. Federally Funded publications 2017-2021',
-    showlegend = False
+    xaxis_title='Total number of publications worldwide 2017-2021 [log]',
+    #yaxis_title='Number of U.S. Federally Funded publications 2017-2021',
+    showlegend=False,
+    font_size = 14
 )
-
-
-jnl_df2 = jnl_df[ (jnl_df['FF Pubs'] > 8000) | (jnl_df['Worldwide']>52000) | (jnl_df['Name'].str.contains('Physical Review B|Chemical Society')) | jnl_df['Name'].isin(selected_journals) ]
-num_rows = jnl_df2.shape[0]
-for i in range(num_rows):
-    fig.add_annotation(x=np.log10(jnl_df2['Worldwide']).iloc[i],
-                       y=jnl_df2["FF Pubs"].iloc[i],
-                       text = jnl_df2["Name"].iloc[i],
-                       showarrow = False,
-                        ax = 0,
-                        yshift = 12
-                      )
-    
-fig.add_annotation(x=4.433, y=6940,
-            text="The FASEB Journal",
-            showarrow=True,
-            arrowhead=0,
-                  ay=18,
-                  ax=10)
-
 
 st.plotly_chart(fig, use_container_width=True)
 st.write('R^2 is',px.get_trendline_results(fig).px_fit_results.iloc[0].rsquared)
+
+
 
 
 st.subheader('Percentage')
@@ -749,7 +826,7 @@ zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/ba
 mastodon = "[![Mastodon Follow](https://img.shields.io/mastodon/follow/108216956438964080?domain=https://scholar.social&style=social)](<https://scholar.social/@eschares>)"
 
 
-html_string = "<p style=font-size:13px>v1.1, last modified 12/7/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v1.1, last modified 12/12/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(zenodo + " " + github)
