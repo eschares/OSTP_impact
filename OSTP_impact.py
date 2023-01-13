@@ -17,7 +17,7 @@ st.set_page_config(page_title='OSTP Impact', page_icon="", layout='wide') #, ini
 
 st.markdown('# Impact of the 2022 OSTP Memo:')
 st.header('A Bibliometric Analysis of U.S. Federally Funded Publications, 2017-2021')
-st.markdown("""##### Companion website showing interactive versions of graphs from the study at [https://arxiv.org/abs/2210.14871](https://arxiv.org/abs/2210.14871).""")
+st.markdown("""##### Companion website showing interactive versions of graphs from the study at [https://doi.org/10.1162/qss_a_00237](https://doi.org/10.1162/qss_a_00237).""")
 st.markdown("""###### by Eric Schares, Iowa State University,  [eschares@iastate.edu](mailto:eschares@iastate.edu)""")
 #st.write('Research IT')
 
@@ -29,7 +29,7 @@ with st.expander("About:"):
         
         The OSTP released a companion report with the memo, but it only provided a broad estimate of total numbers affected per year.
 
-        **Therefore, [this study and website](https://arxiv.org/abs/2210.14871) seek to more deeply investigate the characteristics of U.S. federally funded research** over a 5-year period from 2017-2021 to better understand the impact of the updated guidance. It uses a manually created custom filter in the Dimensions database to return only publications that arise from U.S. federal funding.
+        **Therefore, [this study and website](https://doi.org/10.1162/qss_a_00237) seek to more deeply investigate the characteristics of U.S. federally funded research** over a 5-year period from 2017-2021 to better understand the impact of the updated guidance. It uses a manually created custom filter in the Dimensions database to return only publications that arise from U.S. federal funding.
         
         **Results** show that an average of 265,000 articles are published each year that acknowledge U.S. federal funding agencies. These research outputs are further examined to look at patterns by publisher, journal title, institutions, and Open Access status.
         
@@ -37,7 +37,7 @@ with st.expander("About:"):
 
 with st.expander("How to use:"):
     st.write("""
-        Each static graph from the journal article at [https://arxiv.org/abs/2210.14871](https://arxiv.org/abs/2210.14871) is included here as an interactive version.
+        Each static graph from the journal article at [https://doi.org/10.1162/qss_a_00237](https://doi.org/10.1162/qss_a_00237) is included here as an interactive version.
         
     Users can zoom, pan, and hover over data points for more detail. Double-clicking the graph will reset the axes and zoom back out. Choose to display the y-axis in linear or log scale.
         
@@ -920,7 +920,7 @@ zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/ba
 mastodon = "[![Mastodon Follow](https://img.shields.io/mastodon/follow/108216956438964080?domain=https://scholar.social&style=social)](<https://scholar.social/@eschares>)"
 
 
-html_string = "<p style=font-size:13px>v1.1, last modified 12/12/22 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v1.1, last modified 1/13/23 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(zenodo + " " + github)
