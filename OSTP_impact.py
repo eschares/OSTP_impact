@@ -74,7 +74,8 @@ d = {'Year': [2021, 2020, 2019, 2018, 2017],
     }
 summary_df = pd.DataFrame(data=d)
 summary_df
-
+st.write('The 5-year average is **265,294** publications, and the 5-year sum is 1.326M.')
+st.write('This represents **33%** of all U.S. domestic research output over these 5 years (n=4.020M), and **4.5%** of total global research output over these 5 years (n=29.646M).')
 
 
 # Initialize session_state versions of to_true list
@@ -920,7 +921,7 @@ zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/ba
 mastodon = "[![Mastodon Follow](https://img.shields.io/mastodon/follow/108216956438964080?domain=https://scholar.social&style=social)](<https://scholar.social/@eschares>)"
 
 
-html_string = "<p style=font-size:13px>v1.1, last modified 1/13/23 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v1.1, last modified 4/10/23 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(zenodo + " " + github)
