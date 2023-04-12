@@ -39,6 +39,8 @@ with st.expander("How to use:"):
     st.write("""
         Each static graph from the journal article at [https://doi.org/10.1162/qss_a_00237](https://doi.org/10.1162/qss_a_00237) is included here as an interactive version.
         
+    Prefer an overview video? [This webinar](https://youtu.be/58FVVQaDtrA?t=991) walks through the various graphs and demonstrates how to interpret this site.
+    
     Users can zoom, pan, and hover over data points for more detail. Double-clicking the graph will reset the axes and zoom back out. Choose to display the y-axis in linear or log scale.
         
     Additionally, you may search for a particular publisher, journal title, or research institution to label and color it red to make it easier to find on the graphs.
@@ -921,7 +923,7 @@ zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/ba
 mastodon = "[![Mastodon Follow](https://img.shields.io/mastodon/follow/108216956438964080?domain=https://scholar.social&style=social)](<https://scholar.social/@eschares>)"
 
 
-html_string = "<p style=font-size:13px>v1.1, last modified 4/10/23 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v1.1, last modified 4/12/23 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(zenodo + " " + github)
