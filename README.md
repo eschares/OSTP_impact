@@ -4,6 +4,8 @@ This site hosts the underlying data for an analysis of the impact of the 2022 OS
 
 **Impact of the 2022 OSTP Memo: A Bibliometric Analysis of U.S. Federally Funded Publications, 2017–2021** - [https://doi.org/10.1162/qss_a_00237](https://doi.org/10.1162/qss_a_00237)
 
+A website at [https://ostp.lib.iastate.edu/](https://ostp.lib.iastate.edu/) hosts interactive versions of each plot included in the paper, with dynamic labeling and color-coding to highlight user-defined points.
+
 This analysis looks at five years of publications from 2017-2021 to investigate the characteristics of those research outputs that would have fallen under this updated guidance.
 
 Topics include
@@ -19,4 +21,4 @@ Each of the above has its own data file, which includes
 - Percentage of FF publications
 - Open Access status of FF publications, by absolue number and percentage
 
-A website at [https://ostp.lib.iastate.edu/](https://ostp.lib.iastate.edu/) hosts interactive versions of each plot included in the paper, with dynamic labeling and color-coding to highlight user-defined points.
+[This webinar](https://youtu.be/58FVVQaDtrA?t=991) walks through the various graphs and demonstrates how to interpret this site.
