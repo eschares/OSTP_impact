@@ -22,3 +22,4 @@ Each of the above has its own data file, which includes
 - Open Access status of FF publications, by absolue number and percentage
 
 [This webinar](https://youtu.be/58FVVQaDtrA?t=991) walks through the various graphs and demonstrates how to interpret this site.
+
