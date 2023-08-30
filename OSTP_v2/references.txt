@@ -1,0 +1,59 @@
+OSTP Science and Society Team
+https://www.whitehouse.gov/ostp/ostps-teams/science-and-society/
+
+UOttawa - APC costs by publisher
+The Oligopoly's Shift to Open Access. How the Big Five Academic Publishers Profit from Article Processing Charges
+https://zenodo.org/record/7806651
+
+Early conference version of the above
+https://zenodo.org/record/6951572
+
+STM dashboard
+https://www.stm-assoc.org/oa-dashboard/methodology-and-notes/
+
+
+Other countries:
+Item #2 - cOAlition S convened a working group to look at alternatives to APCs
+https://www.ce-strategy.com/the-brief/control-f-bomb/
+
+Understanding differences of the OA uptake within the German university landscape (2010–2020): part 1—journal-based OA
+https://doi.org/10.1007/s11192-023-04716-3
+
+Understanding differences of the OA uptake within the Germany university landscape (2010-2020) -- Part 2: repository-provided OA
+https://arxiv.org/abs/2308.11965
+
+American Chemical Society TAs by country
+https://axial.acs.org/publishing/how-acs-read-and-publish-agreements-are-facilitating-significant-growth-in-open-access-publishing
+
+Queen's University, Canada
+https://library.queensu.ca/about-us/news-events/queens-and-tri-agencys-update-national-open-access-policy
+
+
+Trying new things:
+Frontiers pilots ‘flat fee’ publishing partnership with the University of California
+Just 20 titles in humanities & social sciences and sustainability. 
+https://blog.frontiersin.org/2023/08/24/frontiers-pilots-flat-fee-publishing-partnership-with-the-university-of-california/
+
+
+Diamond OA model, typically funded by institutions, univeriites, societies, etc.
+
+https://diamasproject.eu/
+
+2nd Diamond Open Access Conference - cOAlition S
+https://globaldiamantoa.org/diamond-open-access-conference/en/home-2/
+
+EU 
+https://www.researchprofessionalnews.com/rr-news-europe-infrastructure-2023-5-eu-ready-to-back-immediate-open-access-without-author-fees/
+"The EU is ready to agree that immediate open access to papers reporting publicly funded research should become the norm, without authors having to pay fees, and that the bloc should support non-profit scholarly publishing models."
+
+
+
+
+Funding acknowledgments and accuracy:
+
+Sugimoto funding acknowledgements and accuracy
+https://arxiv.org/abs/2308.08630
+
+Funding Acknowledgements in Scientific Publications: A Literature Review
+Álvarez-Bornstein, Belén; Montesi, Michela
+Research Evaluation, v29 n4 p469-488 Oct 2020
