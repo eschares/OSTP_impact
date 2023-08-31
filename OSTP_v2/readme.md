@@ -21,9 +21,11 @@ Note: a known issue is the inclusion of "Supplementary" material. This was not s
 Website at https://ostp-v2.streamlit.app/
 
 ### Updates:
-- 8/31/23: Added Research Organizations file, ResOrgs_v2.xlsx.
-  - Main sheet is `summary_pastevalues`. Flat file that contains information on 1088 research organizations, including all R1s, R2s, HBCUs, HSIs, NASNTIs as defined in Dimensions.
-  - ResOrg group definitions from Dimensions added (R1, R2, HBCUs, HSIs, NASNTIs) in sheet `ResOrg-group_definitions`
+- 8/31/23: Added Research Organizations file, `ResOrgs_v2.xlsx`.
+  - Main sheet is `summary_pastevalues`. Flat file that contains information on 1150 research organizations, including R1s, R2s, HBCUs, HSIs, NASNTIs, AANAPISIs as defined in Dimensions.
+  - ResOrg group definitions from Dimensions (R1, R2, HBCUs, HSIs, NASNTIs, AANAPISIs) shown in sheet `ResOrg-group_definitions`
+  - File started with an export of the top 500 orgs in terms of number of FF pubs, 2016-2022 summed.
+  - In some cases, a ResOrg from a group was in the initial pull of top 500. That org was not looked up using the API. Other (smaller) orgs were specifically searched for in the API and added to the bottom of the sheet.
 
 ## Overall Numbers:
 - The sum of US FF papers over the years 2016-2022 is **1,950,355**, and the average number of US FF papers per year is **278,622**.
