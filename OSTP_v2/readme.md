@@ -32,6 +32,16 @@ Research Organizations file, `ResOrgs_v2.xlsx`.
 By Discipline, years 2016-2022 combined
   - Looked deeper into biggest FF code **32 - Biological Sciences**. Biggest sub-code is **3202 - Clinical Sciences**, provide OA breakdown and top journals.
   - OA colors by discipline, for both sub- (4-digit) and top-level (2-digit) codes. Stacked bar charts sorted by highest % Closed. Education has highest % FF Closed
+  - Interactive versions of stacked bar graphs on v2 website
+
+#### 8/30/23:
+
+By OA Color
+  - Stacked bar charts show OA mode by research org groups and comparison funder groups
+
+By journal, 2016-2022 combined and single years
+
+By publisher, 2016-222 combined and single years
 
 
 ## Overall Numbers:
