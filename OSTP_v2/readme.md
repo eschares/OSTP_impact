@@ -25,16 +25,17 @@ Website at https://ostp-v2.streamlit.app/
 
 Research Organizations file, `ResOrgs_v2.xlsx`.
   - Main sheet is `summary_pastevalues`. Flat file that contains information on 1150 research organizations, including R1s, R2s, HBCUs, HSIs, NASNTIs, AANAPISIs as defined in Dimensions.
-  - ResOrg group definitions from Dimensions (R1, R2, HBCUs, HSIs, NASNTIs, AANAPISIs) shown in sheet `ResOrg-group_definitions`
-  - File started with an export of the top 500 orgs in terms of number of FF pubs, 2016-2022 summed.
-  - In some cases, a ResOrg from a group was in the initial pull of top 500. That org was not looked up using the API. Other (smaller) orgs were specifically searched for in the API and added to the bottom of the sheet.
-  - Added new set of files {group}_publish_here, showing top journals that ResOrg groups publish FF research in, 2016-2022
+  - ResOrg group definitions (R1, R2, HBCUs, HSIs, NASNTIs, AANAPISIs) from Dimensions shown in sheet `ResOrg-group_definitions`
+  - File started with an export of top 500 orgs by number of FF pubs, 2016-2022.
+  - In some cases, a ResOrg belonging to a group was in the initial pull of top 500. That org was not looked up using the API. Other (smaller) orgs were specifically searched for in the API and added to the bottom of the sheet.
+  - Did not break it out into individual files for a single year. Could do that if there's interest, will take quite a bit of time to run.
+  - Added new set of files {group}_publish_here, showing top journals that different ResOrg groups publish FF research in, 2016-2022
   - Scatter plot US FF vs. % FF Gold. Not quite what I wanted to see, hard to summarize how ResOrgs differ in their behavior.
 
 By Discipline, years 2016-2022 combined
-  - Looked deeper into biggest FF code **32 - Biological Sciences**. Biggest sub-code is **3202 - Clinical Sciences**, provide OA breakdown and top journals.
   - OA colors by discipline, for both sub- (4-digit) and top-level (2-digit) codes. Stacked bar charts sorted by highest % Closed. Education has highest % FF Closed
   - Interactive versions of stacked bar graphs on v2 website
+  - Looked deeper into biggest FF code **32 - Biological Sciences**. Biggest sub-code is **3202 - Clinical Sciences**, provided OA breakdown and top journals within it.
 
 #### 8/30/23:
 
