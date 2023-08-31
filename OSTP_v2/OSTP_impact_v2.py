@@ -16,7 +16,7 @@ st.set_page_config(page_title='OSTP Impact, v2', page_icon="", layout='wide') #,
 
 
 st.markdown('# Impact of the 2022 OSTP Memo, v2:')
-st.header('A Bibliometric Analysis of U.S. Federally Funded Publications, **2016-2022(*')
+st.header('A Bibliometric Analysis of U.S. Federally Funded Publications, *2016-2022*')
 st.markdown("""##### Revised and expanded dataset from the study at [https://doi.org/10.1162/qss_a_00237](https://doi.org/10.1162/qss_a_00237).""")
 st.markdown("""##### Data collected August 28 - September 1, 2023""")
 st.markdown("""###### by Eric Schares, Iowa State University,  [eschares@iastate.edu](mailto:eschares@iastate.edu)""")
@@ -813,6 +813,82 @@ st.plotly_chart(fig, use_container_width=False)
 
 
 
+st.subheader('Within Discipline (ANZSRC-2020)')
+
+all_disciplines_df = pd.read_csv('./OSTP_v2/by_discipline/by_discipline_OAcolors_2016-2022_summed.csv', header=1, encoding='latin1')
+if st.checkbox('Show raw OA data on all disciplines'):
+    st.subheader('Raw data')
+    st.write(all_disciplines_df)
+
+all_disciplines_df.columns = ['OAMode', 'Discipline', 'Publications']
+all_disciplines_df = all_disciplines_df.pivot_table(index='Discipline', columns='OAMode', values='Publications', aggfunc='sum')
+all_disciplines_df['Total'] = all_disciplines_df['All OA'] + all_disciplines_df['Closed']
+all_disciplines_df['% Closed'] = ((all_disciplines_df['Closed'] / all_disciplines_df['Total']) * 100)
+all_disciplines_df['% Gold'] = ((all_disciplines_df['Gold'] / all_disciplines_df['Total']) * 100)
+all_disciplines_df['% Green'] = ((all_disciplines_df['Green'] / all_disciplines_df['Total']) * 100)
+all_disciplines_df['% Bronze'] = ((all_disciplines_df['Bronze'] / all_disciplines_df['Total']) * 100)
+all_disciplines_df['% Hybrid'] = ((all_disciplines_df['Hybrid'] / all_disciplines_df['Total']) * 100)
+all_disciplines_df=all_disciplines_df.round(2)
+all_disciplines_df = all_disciplines_df.reset_index()
+
+all_disciplines_df = all_disciplines_df.sort_values(by='% Closed', ascending=False)
+
+fig = px.histogram(all_disciplines_df, x='Discipline', y=['% Closed', '% Green', '% Gold', '% Bronze', '% Hybrid'], #color='Mode',
+                  barnorm='percent', text_auto='.2f',
+                  color_discrete_sequence=["gray", "green", "gold", "darkgoldenrod", "red"])
+
+fig.update_layout(
+    height=1000, width=1500,
+    title_text='Open Access Status by Discipline, 2016-2022',
+    xaxis_title = 'Year',
+    yaxis_title = 'Percentage in Discipline by OA Mode',
+    legend_traceorder="reversed",
+    legend_title_text='OA Type',
+    font_size = 14
+)
+
+st.plotly_chart(fig, use_container_width=False)
+
+
+st.subheader('Within Top Level (2-digit code) Disciplines (ANZSRC-2020)')
+
+top_disciplines_df = pd.read_csv('./OSTP_v2/by_discipline/by_discipline_OAcolors_2016-2022_summed_2digitcodesonly.csv', header=1, encoding='latin1')
+if st.checkbox('Show raw OA data on top (2-digit code) disciplines'):
+    st.subheader('Raw data')
+    st.write(top_disciplines_df)
+
+top_disciplines_df.columns = ['OAMode', 'Discipline', 'Publications']
+top_disciplines_df = top_disciplines_df.pivot_table(index='Discipline', columns='OAMode', values='Publications', aggfunc='sum')
+top_disciplines_df['Total'] = top_disciplines_df['All OA'] + top_disciplines_df['Closed']
+top_disciplines_df['% Closed'] = ((top_disciplines_df['Closed'] / top_disciplines_df['Total']) * 100)
+top_disciplines_df['% Gold'] = ((top_disciplines_df['Gold'] / top_disciplines_df['Total']) * 100)
+top_disciplines_df['% Green'] = ((top_disciplines_df['Green'] / top_disciplines_df['Total']) * 100)
+top_disciplines_df['% Bronze'] = ((top_disciplines_df['Bronze'] / top_disciplines_df['Total']) * 100)
+top_disciplines_df['% Hybrid'] = ((top_disciplines_df['Hybrid'] / top_disciplines_df['Total']) * 100)
+top_disciplines_df=top_disciplines_df.round(2)
+top_disciplines_df = top_disciplines_df.reset_index()
+
+top_disciplines_df = top_disciplines_df.sort_values(by='% Closed', ascending=False)
+
+fig = px.histogram(top_disciplines_df, x='Discipline', y=['% Closed', '% Green', '% Gold', '% Bronze', '% Hybrid'], #color='Mode',
+                  barnorm='percent', text_auto='.2f',
+                  color_discrete_sequence=["gray", "green", "gold", "darkgoldenrod", "red"])
+
+fig.update_layout(
+    height=800, width=800,
+    title_text='Open Access Status by Top Level (2-digit code) Discipline, 2016-2022',
+    xaxis_title = 'Year',
+    yaxis_title = 'Percentage in Discipline by OA Mode',
+    legend_traceorder="reversed",
+    legend_title_text='OA Type',
+    font_size = 14
+)
+
+st.plotly_chart(fig, use_container_width=False)
+
+
+
+
 # st.markdown("""---""")
 # ### OA of publishers ###
 # st.subheader('OA Status of Federally Funded pubs by Publisher')
@@ -952,7 +1028,7 @@ github = "[![GitHub repo stars](https://img.shields.io/github/stars/eschares/ost
 mastodon = "[![Mastodon Follow](https://img.shields.io/mastodon/follow/108216956438964080?domain=https://scholar.social&style=social)](<https://scholar.social/@eschares>)"
 
 
-html_string = "<p style=font-size:13px>v2.0, last modified 8/29/2023 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v2.0, last modified 8/31/2023 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(mastodon + " " + github)
