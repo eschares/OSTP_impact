@@ -28,6 +28,7 @@ Research Organizations file, `ResOrgs_v2.xlsx`.
   - ResOrg group definitions from Dimensions (R1, R2, HBCUs, HSIs, NASNTIs, AANAPISIs) shown in sheet `ResOrg-group_definitions`
   - File started with an export of the top 500 orgs in terms of number of FF pubs, 2016-2022 summed.
   - In some cases, a ResOrg from a group was in the initial pull of top 500. That org was not looked up using the API. Other (smaller) orgs were specifically searched for in the API and added to the bottom of the sheet.
+  - Added new set of files {group}_publish_here, showing top journals that ResOrg groups publish FF research in, 2016-2022
 
 By Discipline, years 2016-2022 combined
   - Looked deeper into biggest FF code **32 - Biological Sciences**. Biggest sub-code is **3202 - Clinical Sciences**, provide OA breakdown and top journals.
