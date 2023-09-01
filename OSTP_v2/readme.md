@@ -21,6 +21,15 @@ Note: a known issue is the inclusion of "Supplementary" material. This was not s
 Website at https://ostp-v2.streamlit.app/
 
 ### Updates:
+
+#### 9/1/23:
+Research Organizations:
+  - Top 10 journal titles where different groups (R1, R2, etc.) publish. 2016-2022 combined.
+  - How much concentration is there in each group's top 10 titles, or what percentage of a group's overall output is in just the top 10 journals? NASNTI most concentrated, 11% of output in 10 journals. HSI, HBCU, AANAPISI all over 8%. R1 and R2 around 7%.
+  - Look for any differences in where each group publishes, but hard to quantify. Brought in Journal Impact Factor (JIF) as a way to describe each journal, but don't feel good about it. JIF has many well-known problems and biases. Summary number for a journal is `% of each group's output in that journal * journal's JIF`. If a group publishes a lot in a title, should get more of that journal's JIF in the summary number.
+
+
+
 #### 8/31/23:
 
 Research Organizations file, `ResOrgs_v2.xlsx`.
