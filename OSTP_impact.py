@@ -848,6 +848,47 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=False)
 
 
+st.subheader('"OSTP Susceptibility Index"')
+st.write("What percent of a publisher's portfolio from 2017-2021 has US federal funding, and of that, what percent is published closed access?")
+st.write("Basically combining the Publisher \% graph (#2) with the gray bars above.")
+
+pub_Susceptibility_df = pd.read_csv('Publishers_with_Susceptibility.csv', header=1)
+pub_Susceptibility_df.loc[pub_Susceptibility_df['Name']=='American Chemical Society (ACS)', 'color'] = 'red'
+
+fig = px.scatter(pub_Susceptibility_df, x='Worldwide', y='susceptability', log_x=True, color='color',
+                hover_name='Name',
+                title='OSTP Susceptability Index: Percentage of portfolio that is both USFF *and* closed access')
+
+df2 = pub_Susceptibility_df[(pub_Susceptibility_df['susceptability'] > 19)]
+num_rows = df2.shape[0]
+for i in range(num_rows):
+        fig.add_annotation(x=np.log10(df2['Worldwide']).iloc[i],
+                        y=df2["susceptability"].iloc[i],
+                        text=df2["Name"].iloc[i],
+                        ax=0,
+                        ay = -10
+                        )
+
+fig.add_annotation(x=5.46, y=12, text='ACS', arrowhead=0, showarrow=False)
+fig.add_annotation(x=4.6, y=13, text='AGU', arrowhead=0, showarrow=False)
+fig.add_annotation(x=3.8, y=14, text='Annual Reviews', arrowhead=0, showarrow=False)
+fig.add_annotation(x=4.53, y=9, text='ASCE', arrowhead=0, showarrow=False)
+fig.add_annotation(x=5.2, y=6, text='ACM', arrowhead=0, showarrow=False)
+fig.add_annotation(x=5.27, y=4.5, text='RSC', arrowhead=0, showarrow=True, ax=35, ay=-20)
+fig.add_annotation(x=6.12, y=5.5, text='IEEE', arrowhead=0, showarrow=False)
+
+fig.update_layout(height=700, width=1200,
+                 showlegend=False,
+                 xaxis_title='Total number of publications worldwide 2017-2021 [log]',
+                 yaxis_title='%FF * %FF Closed (%)',
+                 title_text="OSTP Susceptability Index: Percentage of publisher's portfolio that is both USFF *and* closed access",
+                 font_size = 14
+                 )
+
+
+st.plotly_chart(fig, use_container_width=False)
+
+
 
 st.markdown("""---""")
 ### OA of Journals ###
@@ -923,7 +964,7 @@ zenodo = "[![DOI](https://zenodo.org/badge/554219142.svg)](https://zenodo.org/ba
 mastodon = "[![Mastodon Follow](https://img.shields.io/mastodon/follow/108216956438964080?domain=https://scholar.social&style=social)](<https://scholar.social/@eschares>)"
 
 
-html_string = "<p style=font-size:13px>v1.1, last modified 5/10/2023 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
+html_string = "<p style=font-size:13px>v1.1, last modified 10/26/2023 <br />Created by Eric Schares, Iowa State University <br /> <b>eschares@iastate.edu</b></p>"
 st.markdown(html_string, unsafe_allow_html=True)
 
 st.write(zenodo + " " + github)
