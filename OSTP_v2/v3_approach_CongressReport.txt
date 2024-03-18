@@ -1,0 +1,109 @@
+Open Access. - The agreement directs OSTP to produce an in-depth financial analysis of
+the August 25, 2022, Memorandum to Executive Departments and Agencies titled, "Ensuring Free,
+Immediate, and Equitable Access to Federally Funded Research" including the policy's anticipated
+impact on Federal research investments, research integrity, and the peer review process, as was
+previously directed in House Report 117-395, no later than 100 days after the enactment of this
+act. If OSTP fails to provide the Committees with the report within 100 days, then OSTP must
+pause implementation of the memorandum until the agency produces the report
+
+from https://docs.house.gov/billsthisweek/20240304/FY24%20CJS%20Conference%20JES%20scan%203.3.24.pdf
+
+What if most journals flip to gold OA in next 7-10 years
+
+---------
+What would you need? How would you do it?
+Need to predict USFF-acknowledged article counts into the future, then break down overall prediction by journal titles
+Run USFF projections forward at the journal level (500 journals? 1000?)
+
+Once you have it by journal, take that uncertainty in number of articles and assume 100% APC
+Apply journal-specific APC to each journal level projection, multiply each distribution by APC and get a cost estimate
+Sum them up - this is a worst case number if everything is published 100% APC. 
+$1B / year or some such. Will be a headline attention number. Can use that to argue that APCs need to be lower
+
+NEXT start to layer in Green OA repository usage, Platinum/Diamond, S2O, other non-author pays routes.
+At each level of non-APC uptake (1, 2, 3, 4, 5, 6, 7%) randomly remove that number of articles from the above distributions (randomly selected journals) and replace with Green "cost" (very little) or no cost (Diamond, S2O)
+At each non-APC uptake percentage (1, 2, 3, etc), re-run many times (10,000?) and get a distribution of adjusted cost. Different articles will get converted from APC to Green/Diamond each time, and which journal it's in matters A LOT
+
+Who's paying this? Will depend on Corresponding Author % rates for universities in the R1, R2, HBCU, etc buckets .... another study idea I had
+Simulate "who" is the corresponding author
+Break down by university type - HBCU, EPSCoR, R1, R2, etc.
+ECR is harder. Maybe impossible
+
+
+Even if journals flip to gold OA (everything in the journal is OA) or hybrid (piece by piece), we still have green OA repository route at disposal. arXiv, bioRxiv, engRxiv, socRxiv, University DRs, etc. Those don't cost much. 
+
+Cap the amount of USFF money that is allowed to pay an APC? I can't fly first class with federal dollars. Say I can only use $1000 on APCs, rest have to come from somewhere else. Researcher knows best where to publish their article. Don't want to restrict author choice. But can't spend $10,000 of federal money on a Nature APC.
+
+
+Clearly to avoid $1B in federal grant funds going to academic publishers each year, more emphasis is needed on alternative froms of access not-APC based - platinum, diamond, green OA. Even transformative agreements, while inequitable, shift the payment of APC away from USFF grantees and onto their instutitons and libraries.
+
+
+
+
+2023
+House Report 117-395 - https://www.govinfo.gov/content/pkg/CRPT-117hrpt395/html/CRPT-117hrpt395.htm
+
+Federally Funded Scientific Research.--The Committee 
+recognizes the considerable progress made by OSTP in bringing 
+to completion the department and agency public access plans 
+called for by the OSTP Memorandum ``Increasing Access to the 
+Results of Federally Funded Scientific Research,'' issued 
+February 22, 2013. The Committee understands that 22 
+departments and agencies with annual expenditures on research 
+and development of $100,000,000 or more now have completed 
+their public access plans for increasing access to peer-
+reviewed scholarly publications and digital data resulting from 
+Federally funded research. The Committee encourages OSTP to 
+continue its efforts to coordinate the implementation of public 
+access policies across Federal departments and agencies and to 
+identify additional opportunities to enhance access to the 
+results of Federally funded research. The Committee received 
+OSTP's quarterly progress reports regarding department and 
+agency public access planning efforts, the most recent report 
+being issued on January 9, 2017. Further, OSTP shall report to 
+the Committee on an annual basis on the progress of departments 
+and agencies in implementing their public access plans, 
+including relevant measures of progress, and regarding 
+additional steps being taken to improve access to the results 
+of Federally funded research. In addition, at least 90 days 
+prior to making any changes to the Federal Government's public 
+access policies as outlined in the 2013 OSTP memorandum on 
+``Increasing Access to the Results of Federally Funded 
+Scientific Research'', the Committee directs OSTP to submit to 
+the Committee a report on the costs and budgetary impact of 
+such changes. The report shall include a complete analysis of 
+any newly-created costs, including any potential new costs for 
+grant recipients.
+    Open Access Publishing of Scientific Research.--The 
+Committee is concerned that financing mechanisms for open 
+access publishing of scientific research, in particular article 
+processing charges and transformative agreements, may present 
+growing barriers to knowledge generation and sharing. Article 
+processing charges paid by authors and their institutions may 
+create particularly significant burdens for early-career 
+researchers and those from traditionally underrepresented 
+communities. To inform further development of open access 
+policies among Federal research agencies, OSTP is directed to 
+deliver a report to the Committee, no later than 270 days after 
+the enactment of this Act, on article processing charges and 
+transformative agreement costs borne by Federal research 
+grantees during fiscal years 2016 through 2021 and how these 
+financing models affect who can publish. This report shall 
+analyze the effects of open access financing mechanisms, 
+including article processing charges and transformative 
+agreements on costs paid as part of Federal research grants, as 
+possible given limited data on the subject. The report should 
+also assess how these open access financing mechanisms may 
+affect the volume of research publications authored by 
+scientists who are early career or are from smaller, lesser-
+funded, and historically underrepresented institutions, 
+including Historically Black Colleges and Universities; 
+Hispanic-Serving Institutions, EPSCoR, and other Minority-
+Serving institutions; where researchers choose to publish; and 
+potential variability in effects across different research 
+disciplines including, but not limited to, the life sciences, 
+physical sciences, social sciences, humanities, mathematics, 
+and engineering. As part of this report, OSTP shall also 
+include a discussion of how more data might be collected to 
+inform understanding of the impacts of these charges and the 
+feasibility of such data collection.
