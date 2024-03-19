@@ -38,6 +38,21 @@ Cap the amount of USFF money that is allowed to pay an APC? I can't fly first cl
 Clearly to avoid $1B in federal grant funds going to academic publishers each year, more emphasis is needed on alternative froms of access not-APC based - platinum, diamond, green OA. Even transformative agreements, while inequitable, shift the payment of APC away from USFF grantees and onto their instutitons and libraries.
 
 
+--- 3/19/24 ----
+thinking more about finding CA% by university type [R1, R2, HBCU, etc]
+would be like globe tossing binomial y/n    p^y * (1-p)^n   for some randomly sampled number of trials
+but then should propogate that uncertainty forward 
+https://www.youtube.com/watch?v=qD7yqFjgJeI&list=PLDcUM9US4XdMdZOhJWJJD4mDBMnbTWw_z&index=21 at 16:00 
+predicting with averages
+
+Look at CA% rates not as binomial but actually crunch every. single. article.
+Is the institution listed in CA in the list of [R1, R2, HBCU, etc]?
+If yes, 1 in R1 column. If no, move to next one
+Should be able to actually test each line. Will take time but better than estimate and posterior of percentage
+
+
+R1 institutions offer approximately three times the number of services offered by R2s, and more than nine times the number offered by liberal arts colleges.
+https://sr.ithaka.org/publications/the-research-data-services-landscape-at-us-and-canadian-higher-education-institutions/
 
 
 2023
