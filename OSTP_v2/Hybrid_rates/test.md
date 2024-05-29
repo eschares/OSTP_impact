@@ -21,4 +21,5 @@ Then I thought maybe the 2021 pull was running into active embargoes of the 2020
 | 2020     | 3989            | 315    | 7.90%    | 4199         | 648    | 15.43%   | 3974        |
 
 
-
+Expanding analysis to look at multiple years at a time. This shows DOIs across years with a Hybrid status as of 5/29/24, and what the status was in August 2021. Purple means the OA classification is consistent. Elsevier is the publisher that has the most inconsistent OA status.
+![image info](ISU_Dimensions_2014-2020_atonce_ByPublisher_splitbyYear.png)
